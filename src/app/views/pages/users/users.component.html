@@ -1,0 +1,138 @@
+<c-card class="mb-4">
+  <c-card-header>
+    <strong>Listes </strong> <small>Utilisateurs</small>
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+
+      <div class="btn-group">
+        <button type="button" class="btn btn-danger btn-sm" (click)="openLg(content)"><i
+            class="icofont icofont-plus"></i>Ajouter un utilisateur
+        </button>
+        <!-- <ng-container *ngTemplateOutlet="staticBackdrop"></ng-container>-->
+      </div>
+    </div>
+
+  </c-card-header>
+  <c-card-body>
+    <table cTable>
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Matricule </th>
+          <th scope="col">Nom </th>
+          <th scope="col">Prenom</th>
+          <th scope="col">Genre</th>
+          <th scope="col">Telephone</th>
+          <th scope="col">Departement</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of rows">
+          <th scope="row">{{row.id}}</th>
+          <td>{{row.matricule}}</td>
+          <td>{{row.firstname}}</td>
+          <td>{{row.lastname}}</td>
+          <td>{{row.genre}}</td>
+          <td>{{row.phone}}</td>
+          <td>{{row.departement}}</td>
+          <td></td>
+        </tr>
+
+      </tbody>
+    </table>
+  </c-card-body>
+</c-card>
+<ng-template #staticBackdrop>
+  <button [cModalToggle]="staticBackdropModal.id" cButton>Add departement</button>
+  <c-modal #staticBackdropModal backdrop="static" id="staticBackdropModal">
+    <c-modal-header>
+      <h5 cModalTitle>Ajouter departement</h5>
+      <button [cModalToggle]="staticBackdropModal.id" cButtonClose></button>
+    </c-modal-header>
+    <c-modal-body>
+
+    </c-modal-body>
+    <c-modal-footer>
+      <button [cModalToggle]="staticBackdropModal.id" cButton color="secondary">
+        Close
+      </button>
+      <button cButton color="primary">Enregistrer</button>
+    </c-modal-footer>
+  </c-modal>
+</ng-template>
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Ajouter un utilisateur</h4>
+    <button type="button" class="btn close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form cForm [formGroup]="itemForm" ngNativeValidate>
+      <div class="row p-2">
+        <div [cFormFloating]="true" class="mb-3 col-md-6">
+          <input cFormControl id="floatingInput" placeholder="firstname" type="text" formControlName="firstname" />
+          <label cLabel for="floatingInput">Nom</label>
+        </div>
+        <div [cFormFloating]="true" class="mb-3 col-md-6">
+          <input cFormControl id="floatingInput" placeholder="lastname" type="text" formControlName="lastname" />
+          <label cLabel for="floatingInput">Prenom</label>
+        </div>
+        <div [cFormFloating]="true" class="mb-3 col-md-6">
+          <input cFormControl id="floatingInput" placeholder="phone" type="text" formControlName="phone" />
+          <label cLabel for="floatingInput">Telephone</label>
+        </div>
+        <div [cFormFloating]="true" class="mb-3 col-md-6">
+          <input cFormControl id="floatingInput" placeholder="email" type="email" formControlName="email" />
+          <label cLabel for="floatingInput">Email</label>
+        </div>
+        <div class="mb-3 col-md-6">
+          <div>
+            <c-form-check>
+              <input cFormCheckInput formControlName="flexRadioDefault" formControlName="genre" type="radio" value="M" />
+              <label cFormCheckLabel>Homme</label>
+            </c-form-check>
+            <c-form-check>
+              <input cFormCheckInput formControlName="flexRadioDefault" formControlName="genre" type="radio" value="F" />
+              <label cFormCheckLabel>Femme</label>
+            </c-form-check>
+          </div>
+        </div>
+    
+        <div cFormFloating class="mb-3 col-md-6">
+          <select  formControlName="etatCivil" aria-label="Floating label select example" cSelect id="floatingSelect">
+      
+            <option value="marie">Marie(é)</option>
+            <option value="celibataire">Celibataire</option>
+          </select>
+          <label cLabel for="floatingSelect">Etat civil</label>
+        </div>
+        <div [cFormFloating]="true" class="mb-3 col-md-6">
+          <input cFormControl id="floatingInput" placeholder="compteIban" type="text" formControlName="compteIban" />
+          <label cLabel for="floatingInput">CompteIban</label>
+        </div>
+        <div cFormFloating class="mb-3 col-md-6">
+          <select  formControlName="role" aria-label="Floating label select example" cSelect id="floatingSelect_role">
+            <option value="ROLE_USER">ROLE_USER</option>
+            <option value="ROLE_COMPTABLE">ROLE_COMPTABLE</option>
+            <option value="ROLE_ADMIN">ROLE_ADMIN</option>
+          </select>
+          <label cLabel for="floatingSelect">ROLE</label>
+        </div>
+        <div cFormFloating class="mb-3">
+          <select formControlName="departement_id" aria-label="Floating label select example" cSelect id="floatingSelect">
+        
+ <option *ngFor="let departement of departements" value="{{departement.id}}"> {{departement.nomDepartement}} </option>
+       
+          </select>
+          <label cLabel for="floatingSelect">Departement</label>
+        </div>
+      </div>
+
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+    <button class="btn btn-secondary mr-1  pull-right" type="button" (click)="onSubmit()">Enregister</button>
+  </div>
+</ng-template>
