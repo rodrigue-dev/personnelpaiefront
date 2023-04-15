@@ -3,10 +3,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { AvantageComponent } from './avantage/avantage.component';
 import { DepartementComponent } from './departement/departement.component';
 import { FonctionComponent } from './fonction/fonction.component';
+import { HeureSupplComponent } from './heure-suppl/heure-suppl.component';
 import { MyPlaningComponent } from './my-planing/my-planing.component';
+import { PaiementMakeComponent } from './paiement-make/paiement-make.component';
 import { PaiementComponent } from './paiement/paiement.component';
 import { PlaningListComponent } from './planing-list/planing-list.component';
 import { PlaningComponent } from './planing/planing.component';
+import { PresenceComponent } from './presence/presence.component';
 import { ProfilComponent } from './profil/profil.component';
 import { TypePlaningComponent } from './type-planing/type-planing.component';
 import { UsersComponent } from './users/users.component';
@@ -27,6 +30,20 @@ const routes: Routes = [
     }
   },
   {
+    path: 'heuresuppl',
+    component: HeureSupplComponent,
+    data: {
+      title: 'heure suppl'
+    }
+  },
+  {
+    path: 'presence',
+    component: PresenceComponent,
+    data: {
+      title: 'presences'
+    }
+  },
+  {
     path: 'planing',
     component: PlaningComponent,
     data: {
@@ -38,6 +55,13 @@ const routes: Routes = [
     component: PlaningListComponent,
     data: {
       title: 'Planings listes'
+    }
+  },
+  {
+    path: 'paiement-make/:month',
+    component: PaiementMakeComponent,
+    data: {
+      title: 'Paiements'
     }
   },
   {

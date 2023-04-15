@@ -1,36 +1,24 @@
 <c-card class="mb-4">
+    <c-card-header>
+        Calculer les paiements
+    </c-card-header>
     <c-card-body>
-        <div class="row">
-            <div class="col-md-6 d-grid gap-2 d-md-flex justify-content-md-start">
-                <div class="mb-3">
-                    <label cLabel for="floatingSelect">Mois</label>
-                    <select [(ngModel)]="selectmonth" (change)="monthChange(selectmonth)"
-                        aria-label="Floating label select example" cSelect id="floatingSelect">
-                        <option value="1">Janvier</option>
-                        <option value="2">Fevrier</option>
-                        <option value="3">Mars</option>
-                        <option value="4">Avril</option>
-                        <option value="5">Mai</option>
-                        <option value="6">Juin</option>
-                        <option value="7">Juillet</option>
-                        <option value="8">Aout</option>
-                        <option value="9">Septembre</option>
-                        <option value="10">Octobre</option>
-                        <option value="11">Novembre</option>
-                        <option value="12">Decembre</option>
-
-                    </select>
-                   
-                </div>
-            </div>
+        <div class="row justify-content-md-start">
             <div class="col-md-6">
-                <div class="btn-group  float-end">
-                    <button type="button" class="btn btn-primary btn-sm" routerLink="/pages/paiement-make/{{selectmonth}}">Calculer paiement
+                <div class="btn-group">
+                    <button type="button"  (click)="calculSalaire()" class="btn btn-success btn-sm">
+                      <svg cIcon class="me-1" size="md" name="cilTask"></svg>Calculer Salaire
+                    </button>
+                    <button type="button" (click)="generateBulletin()" class="btn btn-warning btn-sm">
+                      <svg cIcon class="me-1" size="md" name="cilFile"></svg> Generer Bulletin paie
+                    </button>
+                    <button type="button" (click)="sendMail()" class="btn btn-dark btn-sm">
+                      <svg cIcon class="me-1" size="md" name="cilShare"></svg>Envoyer bulletin
                     </button>
                 </div>
             </div>
         </div>
-        <div class="row">
+        <div class="row mt-3 table-responsive">
                 <table cTable>
                   <thead>
                     <tr>
@@ -41,6 +29,15 @@
                       <th scope="col">Salaire Brut</th>
                       <th scope="col">Total prime</th>
                       <th scope="col">Salaire Net</th>
+                      <th scope="col">Precompte Pro</th>
+                      <th scope="col">Cotisation Cnss</th>
+                      <th scope="col">Retenu Retraite</th>
+                      <th scope="col">Retenu Chomage</th>
+                      <th scope="col">Cnss Retenue</th>
+                      <th scope="col">Suppl Transport</th>
+                      <th scope="col">Prime HS</th>
+                      <th scope="col">Prime Prestation</th>
+                      <th scope="col">Prime Equipe</th>
                       <th scope="col">Actions</th>
                     </tr>
                   </thead>
@@ -53,10 +50,18 @@
                       <td>{{row.total_brut}}</td>
                       <td>{{row.total_prime}}</td>
                       <td>{{row.total_net}}</td>
+                      <td>{{row.precomptePro}}</td>
+                      <td>{{row.cotisationCnss}}</td>
+                      <td>{{row.retenu_retraite}}</td>
+                      <td>{{row.retenu_chomage}}</td>
+                      <td>{{row.cnss_retenue}}</td>
+                      <td>{{row.suppl_transport}}</td>
+                      <td>{{row.prime_HS}}</td>
+                      <td>{{row.prime_prestation}}</td>
+                      <td>{{row.prime_equipe}}</td>
                       <td>
                         <div class="btn-group">
-                          <button class="btn btn-sm btn-outline-dark" (click)="detail(content,row)">manager</button>
-                          <button class="btn btn-sm btn-outline-success" (click)="printPDF(row)">print</button>
+                          <button class="btn btn-sm btn-outline-dark" (click)="detail(content,row)">Detail</button>
                         </div>
                       </td>
                     </tr>
@@ -129,7 +134,6 @@
         </div>
         
         </form>
-  
     </div>
     <div class="modal-footer">
       <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>

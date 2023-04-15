@@ -25,10 +25,20 @@ export const navItems: INavData[] = [
     title: true
   },
   {
-    name: 'Planings List',
-    url: '/pages/planing-list',
-    iconComponent: { name: 'cil-ListNumbered' },
+    name: 'Fiche presence',
+    url: '/pages/presence',
+    iconComponent: { name: 'cil-Speedometer' },
   },
+  {
+    name: 'Heure suppl',
+    url: '/pages/heuresuppl',
+    iconComponent: { name: 'cil-ReportSlash' },
+  },
+  // {
+  //   name: 'Planings List',
+  //   url: '/pages/planing-list',
+  //   iconComponent: { name: 'cil-ListNumbered' },
+  // },
   {
     name: 'Planings',
     url: '/pages/planing',

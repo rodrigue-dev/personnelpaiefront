@@ -19,7 +19,30 @@ export class DatabaseService {
   httpOptions = {
     headers: new HttpHeaders({'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'})
   };
-
+  getCalculVariablebyMonth(month:number,year:number,type:number) {
+    return this.http.get<any>(`${environment.apiUrl}/v1/paiements/calcul/${month}/${year}/${type}`)
+  }
+  getPaiementbyMonth(id:number) {
+    return this.http.get<any>(`${environment.apiUrl}/v1/paiements/month/${id}`)
+  }
+  getPresencebyDate(date:string) {
+    return this.http.get<any>(`${environment.apiUrl}/v1/fichepresences/date/${date}`)
+  }
+  getHeuresupplementaires() {
+    return this.http.get<any>(`${environment.apiUrl}/v1/heuresupplementaires`)
+  }
+  createHeureSuppl(data:any): Observable<any> {
+    // @ts-ignore
+    return this.http.post<any>(`${environment.apiUrl}/v1/heuresupplementaires`, data);
+  }
+  createPaiement(data:any): Observable<any> {
+    // @ts-ignore
+    return this.http.post<any>(`${environment.apiUrl}/v1/paiements`, data);
+  }
+  createFiche(data:any): Observable<any> {
+    // @ts-ignore
+    return this.http.post<any>(`${environment.apiUrl}/v1/fichepresences`, data);
+  }
   createUser(data:any): Observable<any> {
     // @ts-ignore
     return this.http.post<any>(`${environment.apiUrl}/v1/users`, data);
@@ -27,11 +50,20 @@ export class DatabaseService {
   getUserByEmail(email:string) {
     return this.http.get<any>(`${environment.apiUrl}/v1/users/email/${email}`)
   }
+  getUserById(id:number) {
+    return this.http.get<any>(`${environment.apiUrl}/v1/users/${id}`)
+  }
+  changePassword(id:number,oldpass:any,newpass:any) {
+    return this.http.get<any>(`${environment.apiUrl}/v1/users/changepassword/${id}/${oldpass}/${newpass}`)
+  }
   getUsers() {
     return this.http.get<any>(`${environment.apiUrl}/v1/users`)
   }
   getDepartements() {
     return this.http.get<any>(`${environment.apiUrl}/v1/departements`)
+  }
+  getDepartementsByFoction(id:number) {
+    return this.http.get<any>(`${environment.apiUrl}/v1/departements/fonction/${id}`)
   }
   createDepartement(data:any): Observable<any> {
     // @ts-ignore
@@ -39,6 +71,9 @@ export class DatabaseService {
   }
   getAvantages() {
     return this.http.get<any>(`${environment.apiUrl}/v1/avantages`)
+  }
+  getAvantagesByFoction(id:number) {
+    return this.http.get<any>(`${environment.apiUrl}/v1/avantages/fonction/${id}`)
   }
   createAvantage(data:any): Observable<any> {
     // @ts-ignore
@@ -54,8 +89,43 @@ export class DatabaseService {
   getFonction() {
     return this.http.get<any>(`${environment.apiUrl}/v1/fonctions`)
   }
+  getFonctionByDepartement(id:number) {
+    return this.http.get<any>(`${environment.apiUrl}/v1/fonctions/departement/${id}`)
+  }
   createFonction(data:any): Observable<any> {
     // @ts-ignore
     return this.http.post<any>(`${environment.apiUrl}/v1/fonctions`, data);
+  }
+  createFonctionDepartement(data:any): Observable<any> {
+    // @ts-ignore
+    return this.http.post<any>(`${environment.apiUrl}/v1/fonctions/adddepartement`, data);
+  }
+  createFonctionAvantage(data:any): Observable<any> {
+    // @ts-ignore
+    return this.http.post<any>(`${environment.apiUrl}/v1/fonctions/addavantage`, data);
+  }
+  removeFonctionAvantage(data:any): Observable<any> {
+    // @ts-ignore
+    return this.http.post<any>(`${environment.apiUrl}/v1/fonctions/removeavantage`, data);
+  }
+  removeFonctionDepartement(data:any): Observable<any> {
+    // @ts-ignore
+    return this.http.post<any>(`${environment.apiUrl}/v1/fonctions/removedepartement`, data);
+  }
+  getPlaningModels(date:string) {
+    return this.http.get<any>(`${environment.apiUrl}/v1/planings/models/${date}`)
+  }
+  getPlaningByUserID(id:number,date:string) {
+    return this.http.get<any>(`${environment.apiUrl}/v1/planings/byuser/${id}/${date}`)
+  }
+  getPlaningByID(id:number) {
+    return this.http.get<any>(`${environment.apiUrl}/v1/planings/${id}`)
+  }
+  getPlaningHeaders(date:string) {
+    return this.http.get<any>(`${environment.apiUrl}/v1/planings/headers/${date}`)
+  }
+  createPlaning(data:any): Observable<any> {
+    // @ts-ignore
+    return this.http.post<any>(`${environment.apiUrl}/v1/planings`, data);
   }
 }
