@@ -14,7 +14,7 @@ import { DatabaseService } from 'src/app/core/service/database.service';
   styleUrls: ['./avantage.component.css']
 })
 export class AvantageComponent implements OnInit{
-
+  current_id:number|undefined
   rows:Avantage[] | undefined;
       // @ts-ignore
       itemForm: FormGroup;
@@ -39,13 +39,40 @@ export class AvantageComponent implements OnInit{
     this.modalService.open(content, { size: 'md' });
 
   }
+  openEditLg(content: any,row:any) {
+    this.itemForm=this.formBuilder.group({
+      typeAvantage: row.typeAvantage,
+      id: row.id
+    });
+    this.modalService.open(content, { size: 'md' });
+  }
   onSubmit() {
 
     console.log(this.itemForm.value)
     this.database.createAvantage(this.itemForm.value).subscribe((res: any) => {
       this.toaster.success("Enregistrement avec success", 'OK');
      this.modalService.dismissAll();
+     this.database.getAvantages().subscribe((res)=>{
+      this.rows=res;
+    });
+    }, err => {
+      console.log(err);
+      this.toaster.error("Ust produite", err.message);
+     // this.toaster.error(this.translateService.instant('internalServerError'), err.message);
+    });
+  }
+  openDelete(content: any,row:any) {
+    this.current_id=row.id;
+    this.modalService.open(content, { size: 'md' });
+  }
+  delete() {
 
+    this.database.deleteAvantage(Number(this.current_id)).subscribe((res: any) => {
+      this.toaster.success("Suppression avec success", 'OK');
+     this.modalService.dismissAll();
+     this.database.getAvantages().subscribe((res)=>{
+      this.rows=res;
+    })
     }, err => {
       console.log(err);
       this.toaster.error("Ust produite", err.message);

@@ -21,6 +21,7 @@ import { ProfilComponent } from './profil/profil.component';
 import { PresenceComponent } from './presence/presence.component';
 import { PaiementMakeComponent } from './paiement-make/paiement-make.component';
 import { HeureSupplComponent } from './heure-suppl/heure-suppl.component';
+import { PersonnelComponent } from './personnel/personnel.component';
 
 
 
@@ -38,7 +39,8 @@ import { HeureSupplComponent } from './heure-suppl/heure-suppl.component';
     ProfilComponent,
     PresenceComponent,
     PaiementMakeComponent,
-    HeureSupplComponent
+    HeureSupplComponent,
+    PersonnelComponent
   ],
   imports: [
     CommonModule,

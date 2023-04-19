@@ -23,6 +23,7 @@ export class FonctionComponent  implements OnInit {
   avantages:Avantage[] | undefined;
   selectFonction: null| undefined;
   departement:null| undefined;
+  current_id:number|undefined
   avantagesbyfonction:Avantage[] | undefined;
       // @ts-ignore
       itemForm: FormGroup;
@@ -56,6 +57,19 @@ export class FonctionComponent  implements OnInit {
 
     }
     );
+  }
+  openDelete(content: any,row:any) {
+    this.current_id=row.id;
+    this.modalService.open(content, { size: 'md' });
+  }
+  openEditLg(content: any,row:any) {
+    this.itemForm=this.formBuilder.group({
+      typeFonction: row.typeFonction,
+      salaireSuppl: row.salaireSuppl,
+      heureTravaille: row.heureTravaille,
+      id: row.id
+    });
+    this.modalService.open(content, { size: 'md' });
   }
   openLg(content:any) {
     this.modalService.open(content, { size: 'md' });
@@ -104,7 +118,23 @@ export class FonctionComponent  implements OnInit {
     this.database.createFonction(this.itemForm.value).subscribe((res: any) => {
       this.toaster.success("Enregistrement avec success", 'OK');
      this.modalService.dismissAll();
+     this.database.getFonction().subscribe((res)=>{
+      this.rows=res;
+    })
+    }, err => {
+      console.log(err);
+      this.toaster.error("Ust produite", err.message);
+     // this.toaster.error(this.translateService.instant('internalServerError'), err.message);
+    });
+  }
+  delete() {
 
+    this.database.deleteFonction(Number(this.current_id)).subscribe((res: any) => {
+      this.toaster.success("Suppression avec success", 'OK');
+     this.modalService.dismissAll();
+     this.database.getFonction().subscribe((res)=>{
+      this.rows=res;
+    })
     }, err => {
       console.log(err);
       this.toaster.error("Ust produite", err.message);

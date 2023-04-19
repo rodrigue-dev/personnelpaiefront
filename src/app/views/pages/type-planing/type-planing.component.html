@@ -24,7 +24,13 @@
           <tr *ngFor="let row of rows">
             <th scope="row">{{row.id}}</th>
             <td>{{row.nomType}}</td>
-            <td></td>
+            <td>
+              <div class="btn-group">
+                <button class="btn btn-sm btn-outline-dark"
+                    (click)="openEditLg(contentEdit,row)">Editer</button>
+                    <button class="btn btn-sm btn-outline-danger" (click)="openDelete(contentDelete,row)">Supprimer</button>
+            </div>
+            </td>
           </tr>
   
         </tbody>
@@ -32,6 +38,29 @@
     </c-card-body>
   </c-card>
 
+  <ng-template #contentEdit let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title">Modifier Type planing</h4>
+      <button type="button" class="btn close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form cForm [formGroup]="itemForm" ngNativeValidate>
+        <div class="row p-2">
+          <div [cFormFloating]="true" class="mb-3">
+            <input cFormControl id="floatingInput" placeholder="nomType" type="text" formControlName="nomType" />
+            <label cLabel for="floatingInput">nomType</label>
+          </div>
+        </div>
+  
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+      <button class="btn btn-secondary mr-1  pull-right" type="button" (click)="onSubmit()">Modifier</button>
+    </div>
+  </ng-template>
   <ng-template #content let-modal>
     <div class="modal-header">
       <h4 class="modal-title">Ajouter Type planing</h4>
@@ -53,5 +82,20 @@
     <div class="modal-footer">
       <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
       <button class="btn btn-secondary mr-1  pull-right" type="button" (click)="onSubmit()">Enregister</button>
+    </div>
+  </ng-template>
+  <ng-template #contentDelete let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title">Supprimer un type planing</h4>
+      <button type="button" class="btn close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+     <p>Voulez vous vraiment supprimer ce type de planing?</p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+      <button class="btn btn-secondary mr-1  pull-right" type="button" (click)="delete()">Confimer</button>
     </div>
   </ng-template>

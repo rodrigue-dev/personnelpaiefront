@@ -7,6 +7,7 @@ import { HeureSupplComponent } from './heure-suppl/heure-suppl.component';
 import { MyPlaningComponent } from './my-planing/my-planing.component';
 import { PaiementMakeComponent } from './paiement-make/paiement-make.component';
 import { PaiementComponent } from './paiement/paiement.component';
+import { PersonnelComponent } from './personnel/personnel.component';
 import { PlaningListComponent } from './planing-list/planing-list.component';
 import { PlaningComponent } from './planing/planing.component';
 import { PresenceComponent } from './presence/presence.component';
@@ -27,6 +28,13 @@ const routes: Routes = [
     component: MyPlaningComponent,
     data: {
       title: 'Mon planing'
+    }
+  },
+  {
+    path: 'personnel',
+    component: PersonnelComponent,
+    data: {
+      title: 'Personnels'
     }
   },
   {

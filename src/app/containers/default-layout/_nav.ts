@@ -49,7 +49,12 @@ export const navItems: INavData[] = [
     title: true
   },
   {
-    name: 'Users',
+    name: 'Personnels',
+    url: '/pages/personnel',
+    iconComponent: { name: 'cil-User' },
+  },
+  {
+    name: 'Employes',
     url: '/pages/users',
     iconComponent: { name: 'cil-people' },
   },

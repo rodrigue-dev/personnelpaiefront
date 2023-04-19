@@ -15,6 +15,7 @@ import { DatabaseService } from 'src/app/core/service/database.service';
 })
 export class TypePlaningComponent  implements OnInit {
   rows:TypePlaning[] | undefined;
+  current_id:number|undefined
   departements:Departement[] | undefined;
       // @ts-ignore
       itemForm: FormGroup;
@@ -38,6 +39,14 @@ export class TypePlaningComponent  implements OnInit {
   openLg(content:any) {
     this.modalService.open(content, { size: 'md' });
 
+  
+  }
+  openEditLg(content: any,row:any) {
+    this.itemForm=this.formBuilder.group({
+      nomType: row.nomType,
+      id: row.id
+    });
+    this.modalService.open(content, { size: 'md' });
   }
   onSubmit() {
 
@@ -54,6 +63,24 @@ export class TypePlaningComponent  implements OnInit {
     }, err => {
       console.log(err);
       this.toaster.error("Une erreur s'est produite", err.message);
+     // this.toaster.error(this.translateService.instant('internalServerError'), err.message);
+    });
+  }
+  openDelete(content: any,row:any) {
+    this.current_id=row.id;
+    this.modalService.open(content, { size: 'md' });
+  }
+  delete() {
+
+    this.database.deleteTypeplaning(Number(this.current_id)).subscribe((res: any) => {
+      this.toaster.success("Suppression avec success", 'OK');
+     this.modalService.dismissAll();
+     this.database.getTypeplaning().subscribe((res)=>{
+      this.rows=res;
+    })
+    }, err => {
+      console.log(err);
+      this.toaster.error("Ust produite", err.message);
      // this.toaster.error(this.translateService.instant('internalServerError'), err.message);
     });
   }

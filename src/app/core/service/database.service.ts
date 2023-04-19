@@ -56,6 +56,9 @@ export class DatabaseService {
   changePassword(id:number,oldpass:any,newpass:any) {
     return this.http.get<any>(`${environment.apiUrl}/v1/users/changepassword/${id}/${oldpass}/${newpass}`)
   }
+  getPersonnels() {
+    return this.http.get<any>(`${environment.apiUrl}/v1/personnels`)
+  }
   getUsers() {
     return this.http.get<any>(`${environment.apiUrl}/v1/users`)
   }
@@ -64,6 +67,10 @@ export class DatabaseService {
   }
   getDepartementsByFoction(id:number) {
     return this.http.get<any>(`${environment.apiUrl}/v1/departements/fonction/${id}`)
+  }
+  createPersonnel(data:any): Observable<any> {
+    // @ts-ignore
+    return this.http.post<any>(`${environment.apiUrl}/v1/personnels`, data);
   }
   createDepartement(data:any): Observable<any> {
     // @ts-ignore
@@ -127,5 +134,26 @@ export class DatabaseService {
   createPlaning(data:any): Observable<any> {
     // @ts-ignore
     return this.http.post<any>(`${environment.apiUrl}/v1/planings`, data);
+  }
+  deleteTypeplaning(id:number) {
+    return this.http.delete<any>(`${environment.apiUrl}/v1/typeplanings/${id}`)
+  }
+  deleteFonction(id:number) {
+    return this.http.delete<any>(`${environment.apiUrl}/v1/fonctions/${id}`)
+  }
+  deleteDepartement(id:number) {
+    return this.http.delete<any>(`${environment.apiUrl}/v1/departements/${id}`)
+  }
+  deleteUser(id:number) {
+    return this.http.delete<any>(`${environment.apiUrl}/v1/users/${id}`)
+  }
+  deletePersonnels(id:number) {
+    return this.http.delete<any>(`${environment.apiUrl}/v1/personnels/${id}`)
+  }
+  deleteAvantage(id:number) {
+    return this.http.delete<any>(`${environment.apiUrl}/v1/avantages/${id}`)
+  }
+  deleteheureSuppl(id:number) {
+    return this.http.delete<any>(`${environment.apiUrl}/v1/heuresupplementaires/${id}`)
   }
 }

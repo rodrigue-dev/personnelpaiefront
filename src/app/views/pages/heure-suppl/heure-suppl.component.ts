@@ -14,6 +14,7 @@ import { DatabaseService } from 'src/app/core/service/database.service';
 })
 export class HeureSupplComponent  implements OnInit{
   rows:HeureSuppl[] =[];
+  current_id:number|undefined
   users:User[] =[]
       // @ts-ignore
       itemForm: FormGroup;
@@ -50,6 +51,24 @@ export class HeureSupplComponent  implements OnInit{
       this.toaster.success("Enregistrement avec success", 'OK');
      this.modalService.dismissAll();
 
+    }, err => {
+      console.log(err);
+      this.toaster.error("Ust produite", err.message);
+     // this.toaster.error(this.translateService.instant('internalServerError'), err.message);
+    });
+  }
+  openDelete(content: any,row:any) {
+    this.current_id=row.id;
+    this.modalService.open(content, { size: 'md' });
+  }
+  delete() {
+
+    this.database.deleteheureSuppl(Number(this.current_id)).subscribe((res: any) => {
+      this.toaster.success("Suppression avec success", 'OK');
+     this.modalService.dismissAll();
+     this.database.getHeuresupplementaires().subscribe((res)=>{
+      this.rows=res;
+    })
     }, err => {
       console.log(err);
       this.toaster.error("Ust produite", err.message);
