@@ -76,6 +76,7 @@ export class FonctionComponent  implements OnInit {
 
   }
   openDepartement(contentDepartement:any,id:any) {
+    this.items=[]
     this.modalService.open(contentDepartement, { size: 'lg' });
     console.log(id)
     this.selectFonction=id
@@ -121,6 +122,24 @@ export class FonctionComponent  implements OnInit {
      this.database.getFonction().subscribe((res)=>{
       this.rows=res;
     })
+    }, err => {
+      console.log(err);
+      this.toaster.error("Ust produite", err.message);
+     // this.toaster.error(this.translateService.instant('internalServerError'), err.message);
+    });
+  }
+  removeDepartement(event:any) {
+    this.items=[]
+    this.items.push(event);
+    const values = {
+          'fonction_id':this.selectFonction,
+          'items':this.items,
+     
+  }
+    this.database.removeFonctionDepartement(values).subscribe((res: any) => {
+      this.toaster.success("Suppression avec success", 'OK');
+     this.modalService.dismissAll();
+
     }, err => {
       console.log(err);
       this.toaster.error("Ust produite", err.message);

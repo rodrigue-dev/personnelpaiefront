@@ -141,6 +141,7 @@ export class DatabaseService {
   deleteFonction(id:number) {
     return this.http.delete<any>(`${environment.apiUrl}/v1/fonctions/${id}`)
   }
+  
   deleteDepartement(id:number) {
     return this.http.delete<any>(`${environment.apiUrl}/v1/departements/${id}`)
   }

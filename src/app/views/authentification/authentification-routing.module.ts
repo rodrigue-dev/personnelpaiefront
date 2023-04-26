@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { Page404Component } from './page404/page404.component';
 import { Page500Component } from './page500/page500.component';
 import { LoginComponent } from './login/login.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 const routes: Routes = [
   {
@@ -24,6 +25,13 @@ const routes: Routes = [
     component: LoginComponent,
     data: {
       title: 'Login Page'
+    }
+  },
+  {
+    path: 'forgot-password',
+    component: ResetPasswordComponent,
+    data: {
+      title: 'Mot de passe oublie Page'
     }
   },
 ];

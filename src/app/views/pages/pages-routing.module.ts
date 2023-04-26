@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from 'src/app/core/guard/auth.guard';
+import { Role } from 'src/app/core/models/role';
 import { AvantageComponent } from './avantage/avantage.component';
 import { DepartementComponent } from './departement/departement.component';
 import { FonctionComponent } from './fonction/fonction.component';
@@ -20,8 +22,10 @@ const routes: Routes = [
     path: 'my-profil',
     component: ProfilComponent,
     data: {
-      title: 'Mon profil'
+      title: 'Mon profil',
+      
     }
+    
   },
   {
     path: 'my-planing',
@@ -32,86 +36,110 @@ const routes: Routes = [
   },
   {
     path: 'personnel',
+    canActivate: [AuthGuard],
     component: PersonnelComponent,
     data: {
-      title: 'Personnels'
+      title: 'Personnels',
+      role: [Role.Admin],
     }
   },
   {
     path: 'heuresuppl',
+    canActivate: [AuthGuard],
     component: HeureSupplComponent,
     data: {
-      title: 'heure suppl'
+      title: 'heure suppl',
+      role: [Role.Admin,Role.Comptable],
     }
   },
   {
     path: 'presence',
+    canActivate: [AuthGuard],
     component: PresenceComponent,
     data: {
-      title: 'presences'
+      title: 'presences',
+      role: [Role.Admin,Role.Comptable],
     }
   },
   {
     path: 'planing',
+    canActivate: [AuthGuard],
     component: PlaningComponent,
     data: {
-      title: 'Planings'
+      title: 'Planings',
+      role: [Role.Admin,Role.Comptable],
     }
   },
   {
     path: 'planing-list',
+    canActivate: [AuthGuard],
     component: PlaningListComponent,
     data: {
-      title: 'Planings listes'
+      title: 'Planings listes',
+      role: [Role.Admin,Role.Comptable],
     }
   },
   {
     path: 'paiement-make/:month',
+    canActivate: [AuthGuard],
     component: PaiementMakeComponent,
     data: {
-      title: 'Paiements'
+      title: 'Paiements',
+      role: [Role.Admin,Role.Comptable],
     }
   },
   {
     path: 'paiement',
+    canActivate: [AuthGuard],
     component: PaiementComponent,
     data: {
-      title: 'Paiements'
+      title: 'Paiements',
+      role: [Role.Admin,Role.Comptable],
     }
   },
   {
     path: 'users',
+    canActivate: [AuthGuard],
     component: UsersComponent,
     data: {
-      title: 'Users'
+      title: 'Users',
+      role: [Role.Admin,Role.Comptable],
     }
   },
   {
     path: 'departements',
+    canActivate: [AuthGuard],
     component: DepartementComponent,
     data: {
-      title: 'Departements'
+      title: 'Departements',
+      role: [Role.Admin,Role.Comptable],
     }
   },
   {
     path: 'type-planing',
+    canActivate: [AuthGuard],
     component: TypePlaningComponent,
     data: {
-      title: 'Type planing'
+      title: 'Type planing',
+      role: [Role.Admin,Role.Comptable],
     }
   },
   {
     path: 'avantages',
+    canActivate: [AuthGuard],
     component: AvantageComponent,
     data: {
-      title: 'Avantages'
+      title: 'Avantages',
+      role: [Role.Admin,Role.Comptable],
     }
   },
   {
     path: 'fonctions',
+    canActivate: [AuthGuard],
     component: FonctionComponent,
     data: {
-      title: 'Fonctions'
+      title: 'Fonctions',
+      role: [Role.Admin,Role.Comptable],
     }
   }
 

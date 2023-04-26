@@ -137,7 +137,7 @@
               <tr *ngFor="let row of departementsbyfonction">
                 <td></td>
                 <td>{{row.nomDepartement}}</td>
-                <td><button class="btn btn-sm btn-danger">
+                <td><button (click)="removeDepartement(row.id)" class="btn btn-sm btn-danger">
                   <svg cIcon class="me-2" name="cilTrash"></svg>
                 </button></td>
               </tr>

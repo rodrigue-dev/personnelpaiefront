@@ -1,11 +1,11 @@
 <c-card class="mb-4">
   <c-card-header>
-    <strong>Listes </strong> <small>Utilisateurs</small>
+    <strong>Liste </strong> <small>Employés</small>
     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
 
       <div class="btn-group">
         <button type="button" class="btn btn-danger btn-sm" (click)="openLg(content)"><i
-            class="icofont icofont-plus"></i>Ajouter un utilisateur
+            class="icofont icofont-plus"></i>Ajouter un employé
         </button>
         <!-- <ng-container *ngTemplateOutlet="staticBackdrop"></ng-container>-->
       </div>
@@ -13,6 +13,7 @@
 
   </c-card-header>
   <c-card-body>
+    <div class="table-responsive">
     <table cTable>
       <thead>
         <tr>
@@ -21,8 +22,10 @@
           <th scope="col">Nom </th>
           <th scope="col">Prenom</th>
           <th scope="col">Genre</th>
+          <th scope="col">Email</th>
           <th scope="col">Telephone</th>
           <th scope="col">Departement</th>
+          <th scope="col">Role</th>
           <th scope="col">Actions</th>
         </tr>
       </thead>
@@ -33,8 +36,10 @@
           <td>{{row.firstname}}</td>
           <td>{{row.lastname}}</td>
           <td>{{row.genre}}</td>
+          <td>{{row.email}}</td>
           <td>{{row.phone}}</td>
           <td>{{row.departement}}</td>
+          <td>{{row.role}}</td>
           <td>
             <div class="btn-group">
               <button class="btn btn-sm btn-outline-dark"
@@ -46,11 +51,12 @@
 
       </tbody>
     </table>
+  </div>
   </c-card-body>
 </c-card>
 <ng-template #contentEdit let-modal>
   <div class="modal-header">
-    <h4 class="modal-title">Modifier un utilisateur</h4>
+    <h4 class="modal-title">Modifier un employé</h4>
     <button type="button" class="btn close" aria-label="Close" (click)="modal.dismiss('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>

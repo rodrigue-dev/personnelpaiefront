@@ -8,12 +8,14 @@ import { Page500Component } from './page500/page500.component';
 import {ButtonGroupModule, ButtonModule, CardModule, FormModule, GridModule} from '@coreui/angular';
 import { IconModule } from '@coreui/icons-angular';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 @NgModule({
   declarations: [
     LoginComponent,
     Page404Component,
-    Page500Component
+    Page500Component,
+    ResetPasswordComponent
   ],
   imports: [
     CommonModule,

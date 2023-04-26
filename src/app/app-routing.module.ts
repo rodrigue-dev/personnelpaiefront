@@ -5,6 +5,8 @@ import { DefaultLayoutComponent } from './containers';
 import { Page404Component } from './views/authentification/page404/page404.component';
 import { Page500Component } from './views/authentification/page500/page500.component';
 import { LoginComponent } from './views/authentification/login/login.component';
+import { ResetPasswordComponent } from './views/authentification/reset-password/reset-password.component';
+import { AuthGuard } from './core/guard/auth.guard';
 
 const routes: Routes = [
   {
@@ -32,7 +34,8 @@ const routes: Routes = [
       {
         path: 'pages',
         loadChildren: () =>
-          import('./views/pages/pages.module').then((m) => m.PagesModule)
+          import('./views/pages/pages.module').then((m) => m.PagesModule),
+          canActivate: [AuthGuard],
       },
     ]
   },
@@ -55,6 +58,13 @@ const routes: Routes = [
     component: LoginComponent,
     data: {
       title: 'Login Page'
+    }
+  },
+  {
+    path: 'forgot-password',
+    component: ResetPasswordComponent,
+    data: {
+      title: 'forgot-password Page'
     }
   },
   {path: '**', redirectTo: 'dashboard'}

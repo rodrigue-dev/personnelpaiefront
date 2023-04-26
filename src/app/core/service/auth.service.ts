@@ -5,6 +5,7 @@ import { User } from '../models/user';
 import { environment } from 'src/environments/environment';
 import {DatabaseService} from "./database.service";
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root',
@@ -17,6 +18,7 @@ export class AuthService {
   constructor(private http: HttpClient,
     private databaseService:DatabaseService,
     private route: ActivatedRoute,
+    private toaster: ToastrService,
     private router: Router,) {
     this.currentUserSubject = new BehaviorSubject<User>(
       JSON.parse(<string>localStorage.getItem('currentUser'))
@@ -27,7 +29,9 @@ export class AuthService {
   public get currentUserValue(): User {
     return this.currentUserSubject!.value;
   }
-
+  resetpassword(email:string) {
+    return this.http.get<any>(`${environment.apiUrl}/auth/forgotpassword/${email}`)
+  }
   login(username: string, password: string) {
 
     return this.http
@@ -43,15 +47,18 @@ export class AuthService {
             this.SetUserData(res);
             localStorage.setItem('currentUser', JSON.stringify(this.userData));
             if (res) {
+              this.toaster.success("Connexion successful", 'OK');
               this.router.navigate(["/component/dashboard"]);
             } else {
-              this.router.navigate(["/authentication/signin"]);
+              this.router.navigate(["/login"]);
             }
           }, err => {
+            this.toaster.error("Une erreur s'est produite", err.message);
             console.log(err);
           });
         },
         (error)=>{
+          this.toaster.error("Une erreur s'est produite", error.message);
           console.log(error)
         }
       );
@@ -72,7 +79,7 @@ export class AuthService {
       lastname: user.lastname,
       password: user.email,
       token: this.token,
-      role: user.roles,
+      role: user.role,
       id: user.id,
       img: user.photoURL || 'assets/dashboeard/boy-2.png',
       username: undefined,

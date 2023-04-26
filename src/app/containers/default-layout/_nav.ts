@@ -1,15 +1,20 @@
 import { INavData } from '@coreui/angular';
-
-export const navItems: INavData[] = [
+export interface IcustomNavData extends INavData{
+  role?:string
+}
+export const navItems: IcustomNavData[] = [
   {
     name: 'Dashboard',
     url: '/dashboard',
     iconComponent: { name: 'cil-speedometer' },
+    role:"ALL"
+  
   },
   {
     name: 'Mon planing',
     url: '/pages/my-planing',
     iconComponent: { name: 'cil-JustifyCenter' },
+    role:"ALL"
   },
   {
     name: 'Comptabilite',
@@ -19,6 +24,7 @@ export const navItems: INavData[] = [
     name: 'Paiements',
     url: '/pages/paiement',
     iconComponent: { name: 'cil-Dollar' },
+    role:"ADMIN"
   },
   {
     name: 'Operations',
@@ -48,11 +54,11 @@ export const navItems: INavData[] = [
     name: 'Parametre',
     title: true
   },
-  {
+/*   {
     name: 'Personnels',
     url: '/pages/personnel',
     iconComponent: { name: 'cil-User' },
-  },
+  }, */
   {
     name: 'Employes',
     url: '/pages/users',
@@ -77,5 +83,20 @@ export const navItems: INavData[] = [
     name: 'Avantage',
     url: '/pages/avantages',
     iconComponent: { name: 'cil-Options' },
+  },
+];
+export const navItemsUSER: IcustomNavData[] = [
+  {
+    name: 'Dashboard',
+    url: '/dashboard',
+    iconComponent: { name: 'cil-speedometer' },
+    role:"ALL"
+  
+  },
+  {
+    name: 'Mon planing',
+    url: '/pages/my-planing',
+    iconComponent: { name: 'cil-JustifyCenter' },
+    role:"ALL"
   },
 ];

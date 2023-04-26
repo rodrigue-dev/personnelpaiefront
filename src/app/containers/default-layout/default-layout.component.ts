@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
+import { Role } from 'src/app/core/models/role';
+import { AuthService } from 'src/app/core/service/auth.service';
 
-import { navItems } from './_nav';
+import { IcustomNavData, navItems, navItemsUSER } from './_nav';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,11 +10,18 @@ import { navItems } from './_nav';
 })
 export class DefaultLayoutComponent {
 
-  public navItems = navItems;
+  public navItems! :IcustomNavData [];
 
   public perfectScrollbarConfig = {
     suppressScrollX: true,
   };
 
-  constructor() {}
+  constructor(private authService: AuthService,) {
+    const userRole = this.authService.currentUserValue.role;
+    if(userRole==Role.User){
+       this.navItems = navItemsUSER;
+    }else{
+      this.navItems = navItems;
+    }
+  }
 }
