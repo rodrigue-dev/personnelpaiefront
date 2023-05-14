@@ -14,8 +14,33 @@
             </div>
         </div>
     </div>
-    <div class="card-body">
-        <table class="table table-bordered">
+   <div class="card-body">
+      <!--  <table class="table table-bordered">
+            <thead>
+                <th>Employé</th>
+                <th>Type de planing</th> 
+                <th>Date debut</th> 
+                <th>Date fin</th> 
+                <th>Action</th> 
+            </thead>
+            <tbody>
+                <tr *ngFor="let row of rowModels">
+                    <td>{{row.user_name}}</td>
+                    <td>{{row.type_planing_string}} <span *ngIf="row.type_planing==1">({{row.heure_debut}})</span></td>
+                    <td>{{row.date_debut}}</td>
+                    <td>{{row.date_fin}}</td>
+                    <td><div class="btn-group">
+                        <button class="btn btn-sm btn-outline-success" *ngIf="row.type_planing==1">changer les heures</button>
+                        <button (click)="openLg(content,row)" class="btn btn-sm btn-outline-dark">
+                        fonction
+                        </button>
+                    </div>
+                        
+                    </td>
+                </tr>
+            </tbody>
+        </table>--> 
+      <table class="table table-bordered">
             <thead>
                 <th>Employé</th>
                 <th *ngFor="let day of rowHeaders">{{day | date:"EEE'\n'd/M"}}</th>
@@ -30,11 +55,11 @@
                                 
                                 {{line.heure_debut}} - {{line.heure_fin}}
                                 <div class="btn-group">
-                                   <button *ngIf="checkOldDate(line.date_planing)" title="Modifier le planing" (click)="editModal(contentedit,line.planing_id)" class="btn btn-sm btn-outline-success">
+                                   <!--  <button *ngIf="checkOldDate(line.date_planing)" title="Modifier le planing" (click)="editModal(contentedit,line.planing_id)" class="btn btn-sm btn-outline-success">
                                     <i class="fa fa-edit"></i>
-                                </button>
-                                <button *ngIf="checkOldDate(line.date_planing)" title="Modifier le planing" (click)="deleteModal(delete,line.planing_id)" class="btn btn-sm btn-outline-danger">
-                                    <i class="fa fa-trash"></i>
+                                </button>-->
+                                <button *ngIf="checkOldDate(line.date_planing)" title="Annuler" (click)="deleteModal(delete,line.planing_id)" class="btn btn-sm btn-outline-danger">
+                                    <i class="fa fa-times"></i>
                                 </button> 
                                 </div>
                                 
@@ -46,12 +71,12 @@
 
                             </div>
                         </div>
-                        <div class="text-center" *ngIf="line.planing_id ==0 && checkOldDate(line.date_planing)">
+                       <!--  <div class="text-center" *ngIf="line.planing_id ==0 && checkOldDate(line.date_planing)">
                             <button (click)="openLg(content,line.date_planing,row)" class="btn btn-sm btn-outline-dark">
-                                <!-- <svg cIcon class="me-2" size="sm" name="cilPen"></svg>-->
+                        
                                 <i class="fa fa-plus"></i>
                             </button>
-                        </div>
+                        </div>-->
 
                     </td>
                     <td>{{row.total_heure|number}}</td>
@@ -76,27 +101,25 @@
                 
                     <div class="row p-4">
                         <div cFormFloating class="mb-3">
-                            <select formControlName="type_planing_id" aria-label="Floating label select example" cSelect id="floatingSelect">
+                            <select formControlName="type_planing" aria-label="Floating label select example" cSelect id="floatingSelect">
                           
-                        <option *ngFor="let type of typePlanings" value="{{type.id}}"> {{type.nomType}} </option>
-                         
+                        <!-- <option *ngFor="let type of typePlanings" value="{{type.id}}"> {{type.nomType}} </option>--> 
+                        <option value="0"> Temps plein </option>
+                        <option value="1"> Mi-Temps</option>
+                        <option value="2"> Etudiant </option>
                             </select>
                             <label cLabel for="floatingSelect">Type de planing</label>
                           </div>
-                        <div [cFormFloating]="true" class="mb-3">
-                            <input cFormControl id="floatingInput" placeholder="Date" type="date"
+                
+                        <div [cFormFloating]="true" class="col-md-6 mb-3">
+                            <input cFormControl id="floatingInput" placeholder="salaireSuppl" type="date"
                                 formControlName="date_debut" />
-                            <label cLabel for="floatingInput">Date</label>
+                            <label cLabel for="floatingInput">Date debut</label>
                         </div>
                         <div [cFormFloating]="true" class="col-md-6 mb-3">
-                            <input cFormControl id="floatingInput" placeholder="salaireSuppl" type="time"
-                                formControlName="heure_debut" />
-                            <label cLabel for="floatingInput">Heure debut</label>
-                        </div>
-                        <div [cFormFloating]="true" class="col-md-6 mb-3">
-                            <input cFormControl id="floatingInput" placeholder="phone" type="time"
-                                formControlName="heure_fin" />
-                            <label cLabel for="floatingInput">heure de fin</label>
+                            <input cFormControl id="floatingInput" placeholder="phone" type="date"
+                                formControlName="date_fin" />
+                            <label cLabel for="floatingInput">Date de fin</label>
                         </div>
                         <div cFormFloating class="mb-3">
                             <select formControlName="fonction_id" aria-label="Floating label select example" cSelect id="floatingSelect">
@@ -129,7 +152,8 @@
                     </c-form-check>
                   </div>
             </div> 
-        </div></form>
+        </div>
+    </form>
 
     </div>
     <div class="modal-footer">

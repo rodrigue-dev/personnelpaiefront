@@ -28,6 +28,7 @@ import { MyHeuresuppComponent } from './my-heuresupp/my-heuresupp.component';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { SendMailComponent } from './send-mail/send-mail.component';
 import { SendSmsComponent } from './send-sms/send-sms.component';
+import { AbsenceComponent } from './absence/absence.component';
 
 
 
@@ -51,7 +52,8 @@ import { SendSmsComponent } from './send-sms/send-sms.component';
     MyPaiementComponent,
     MyHeuresuppComponent,
     SendMailComponent,
-    SendSmsComponent
+    SendSmsComponent,
+    AbsenceComponent
   ],
   imports: [
     CommonModule,
