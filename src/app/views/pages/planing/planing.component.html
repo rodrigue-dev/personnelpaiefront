@@ -71,12 +71,9 @@
 
                             </div>
                         </div>
-                       <!--  <div class="text-center" *ngIf="line.planing_id ==0 && checkOldDate(line.date_planing)">
-                            <button (click)="openLg(content,line.date_planing,row)" class="btn btn-sm btn-outline-dark">
-                        
-                                <i class="fa fa-plus"></i>
-                            </button>
-                        </div>-->
+                       <div [ngClass]="{'disabled': true}" class="text-center" *ngIf="line.planing_id ==0 && checkOldDate(line.date_planing)">
+                            
+                        </div>
 
                     </td>
                     <td>{{row.total_heure|number}}</td>

@@ -16,6 +16,7 @@ export class AbsenceComponent  implements OnInit{
   current_id:number|undefined
   rows:Absence[] | undefined;
   users:User[] | undefined;
+  public selected :any = [];
       // @ts-ignore
       itemForm: FormGroup;
       constructor( private modalService: NgbModal,private formBuilder: FormBuilder,
@@ -47,6 +48,8 @@ export class AbsenceComponent  implements OnInit{
   openEditLg(content: any,row:any) {
     this.itemForm=this.formBuilder.group({
       motif: row.motif,
+      dateAbsence:row.dateAbsence,
+      user_id:row.user_id,
       id: row.id
     });
     this.modalService.open(content, { size: 'md' });
@@ -75,7 +78,7 @@ export class AbsenceComponent  implements OnInit{
     this.database.deleteAbsence(Number(this.current_id)).subscribe((res: any) => {
       this.toaster.success("Suppression avec success", 'OK');
      this.modalService.dismissAll();
-     this.database.getAvantages().subscribe((res)=>{
+     this.database.getAbsences().subscribe((res)=>{
       this.rows=res;
     })
     }, err => {

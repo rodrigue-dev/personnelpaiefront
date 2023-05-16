@@ -91,6 +91,9 @@ export class DatabaseService {
   getAvantagesByFoction(id:number) {
     return this.http.get<any>(`${environment.apiUrl}/v1/avantages/fonction/${id}`)
   }
+  getPlageByDate(id:number,date:string) {
+    return this.http.get<any>(`${environment.apiUrl}/v1/fichepresences/plage/${date}/${id}`)
+  }
   getMyAbsences(id:number) {
     return this.http.get<any>(`${environment.apiUrl}/v1/absences/my/${id}`)
   }
