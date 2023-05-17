@@ -114,6 +114,7 @@ export class UsersComponent  implements OnInit{
       departement_id: row.departement_id,
       id: row.id,
       departement: row.departement,
+      typeplaning:row.typeplaning,
       imageFile:row.imageFile
     })
     this.modalService.open(content, { size: 'lg' });

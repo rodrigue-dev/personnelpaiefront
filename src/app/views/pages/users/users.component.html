@@ -193,7 +193,19 @@
           </select>
           <label cLabel for="floatingSelect">ROLE</label>
         </div>
-        <div cFormFloating class="mb-3 col-md-12">
+        <div cFormFloating class="mb-3 col-md-6">
+          <select formControlName="typeplaning" aria-label="Floating label select example" cSelect
+            id="floatingSelect">
+            <option value="0"> Temps-plein
+            </option>
+            <option value="1"> Mi-Temps
+            </option>
+            <option value="2"> Etudiant
+            </option>
+          </select>
+          <label cLabel for="floatingSelect">Type de planing</label>
+        </div>
+        <div cFormFloating class="mb-3 col-md-6">
           <select (change)="changeDepartement($event)" formControlName="departement_id"
             aria-label="Floating label select example" cSelect id="floatingSelect">
 
