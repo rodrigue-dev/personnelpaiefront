@@ -8,6 +8,7 @@ export class MakePlaning{
     departement_id: number | undefined;
     fonction_id: number | undefined;
     type_planing_id: number | undefined;
+    typeplaning: number | undefined;
     typeFonction: string | undefined;
     user_name: string | undefined;
     repeat: string | undefined;

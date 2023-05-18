@@ -27,7 +27,8 @@ export class AbsenceComponent  implements OnInit{
   ngOnInit(): void {
     this.itemForm = this.formBuilder.group({
       motif: ["", Validators.required],
-      dateAbsence: ["", Validators.required],
+      dateDebut: ["", Validators.required],
+      dateFin: ["", Validators.required],
       user_id: ["", Validators.required],
       id: [null, Validators.required]
     });
@@ -48,7 +49,8 @@ export class AbsenceComponent  implements OnInit{
   openEditLg(content: any,row:any) {
     this.itemForm=this.formBuilder.group({
       motif: row.motif,
-      dateAbsence:row.dateAbsence,
+      dateDebut:row.dateDebut,
+      dateFin:row.dateFin,
       user_id:row.user_id,
       id: row.id
     });

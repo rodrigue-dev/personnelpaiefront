@@ -55,9 +55,10 @@
                                 
                                 {{line.heure_debut}} - {{line.heure_fin}}
                                 <div class="btn-group">
-                                   <!--  <button *ngIf="checkOldDate(line.date_planing)" title="Modifier le planing" (click)="editModal(contentedit,line.planing_id)" class="btn btn-sm btn-outline-success">
+                                   <button *ngIf="line.typeplaning ==2" title="Modifier le planing" (click)="editModal(contentedit,line.planing_id)"
+                                    class="btn btn-sm btn-outline-success">
                                     <i class="fa fa-edit"></i>
-                                </button>-->
+                                </button>
                                 <button *ngIf="checkOldDate(line.date_planing)" title="Annuler" (click)="deleteModal(delete,line.planing_id)" class="btn btn-sm btn-outline-danger">
                                     <i class="fa fa-times"></i>
                                 </button> 
@@ -161,7 +162,7 @@
 
 <ng-template #contentedit let-modal>
     <div class="modal-header">
-        <h4 class="modal-title">Ajouter un planing de {{select_user}}</h4>
+        <h4 class="modal-title">Modifier un planing de {{select_user}}</h4>
         <button type="button" class="btn close" aria-label="Close" (click)="modal.dismiss('Cross click')">
             <span aria-hidden="true">&times;</span>
         </button>
@@ -172,15 +173,8 @@
           
               <div class="col-md-12">
                 
-                    <div class="row p-4">
-                        <div cFormFloating class="mb-3">
-                            <select formControlName="type_planing_id" aria-label="Floating label select example" cSelect id="floatingSelect">
-                          
-                        <option *ngFor="let type of typePlanings" value="{{type.id}}"> {{type.nomType}} </option>
-                         
-                            </select>
-                            <label cLabel for="floatingSelect">Type de planing</label>
-                          </div>
+                    <div class="row p-4"
+                      
                         <div [cFormFloating]="true" class="mb-3">
                             <input cFormControl id="floatingInput" placeholder="Date" type="date"
                                 formControlName="date_debut" />

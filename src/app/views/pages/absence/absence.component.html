@@ -21,9 +21,14 @@
           {{row.user_name}}
         </ng-template>
       </ngx-datatable-column>
-      <ngx-datatable-column name="Date" prop="dateAbsence">
+      <ngx-datatable-column name="Date de debut" prop="dateDebut">
         <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
-          {{row.dateAbsence}}
+          {{row.dateDebut}}
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column name="Date de fin" prop="dateFin">
+        <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+          {{row.dateFin}}
         </ng-template>
       </ngx-datatable-column>
       <ngx-datatable-column name="Motif">
@@ -56,7 +61,7 @@
           <tr *ngFor="let row of rows">
             <th scope="row">{{row.id}}</th>
             <td>{{row.user_name}}</td>
-            <td>{{row.dateAbsence}}</td>
+            <td>{{row.dateDebut}}</td>
             <td>{{row.motif}}</td>
             <td>
               <div class="btn-group">
@@ -90,8 +95,14 @@
         </div>
         <div class="row p-2">
           <div [cFormFloating]="true" class="mb-3">
-            <input cFormControl id="floatingInput" placeholder="Date" type="date" formControlName="dateAbsence" />
-            <label cLabel for="floatingInput">Date</label>
+            <input cFormControl id="floatingInput" placeholder="Date" type="date" formControlName="dateDebut" />
+            <label cLabel for="floatingInput">Date debut</label>
+          </div>
+        </div>
+        <div class="row p-2">
+          <div [cFormFloating]="true" class="mb-3">
+            <input cFormControl id="floatingInput" placeholder="Date" type="date" formControlName="dateFin" />
+            <label cLabel for="floatingInput">Date fin</label>
           </div>
         </div>
         <div class="row p-2">
