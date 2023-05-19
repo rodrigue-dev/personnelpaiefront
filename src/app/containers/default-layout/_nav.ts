@@ -86,6 +86,11 @@ export const navItems: IcustomNavData[] = [
     iconComponent: { name: 'cil-file' },
   },
   {
+    name: 'Planings Mois',
+    url: '/pages/planing-month',
+    iconComponent: { name: 'cil-file' },
+  },
+  {
     name: 'Parametre',
     title: true
   },
@@ -174,8 +179,8 @@ export const navItemsComptable: IcustomNavData[] = [
     title: true
   },
   {
-    name: 'Fiche presence',
-    url: '/pages/presence',
+    name: 'Absence',
+    url: '/pages/absence',
     iconComponent: { name: 'cil-Speedometer' },
   },
   {
@@ -187,6 +192,11 @@ export const navItemsComptable: IcustomNavData[] = [
   {
     name: 'Planings',
     url: '/pages/planing',
+    iconComponent: { name: 'cil-file' },
+  },
+  {
+    name: 'Planings Mois',
+    url: '/pages/planing-month',
     iconComponent: { name: 'cil-file' },
   },
 ];

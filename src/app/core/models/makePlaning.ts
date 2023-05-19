@@ -12,4 +12,5 @@ export class MakePlaning{
     typeFonction: string | undefined;
     user_name: string | undefined;
     repeat: string | undefined;
+    ispointe: boolean | undefined;
 }

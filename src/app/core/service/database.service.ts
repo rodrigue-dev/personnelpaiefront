@@ -144,6 +144,9 @@ export class DatabaseService {
   getPlaningModels(date:string) {
     return this.http.get<any>(`${environment.apiUrl}/v1/planings/models/${date}`)
   }
+  getPlaningModelMonths(date:string) {
+    return this.http.get<any>(`${environment.apiUrl}/v1/planings/models/month/${date}`)
+  }
   getPlaningAll() {
     return this.http.get<any>(`${environment.apiUrl}/v1/planings`)
   }
@@ -155,6 +158,9 @@ export class DatabaseService {
   }
   getPlaningHeaders(date:string) {
     return this.http.get<any>(`${environment.apiUrl}/v1/planings/headers/${date}`)
+  }
+  getPlaningHeaderMonths(date:string) {
+    return this.http.get<any>(`${environment.apiUrl}/v1/planings/headers/month/${date}`)
   }
   createPlaning(data:any): Observable<any> {
     // @ts-ignore

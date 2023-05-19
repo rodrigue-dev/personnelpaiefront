@@ -15,6 +15,7 @@ import { PaiementMakeComponent } from './paiement-make/paiement-make.component';
 import { PaiementComponent } from './paiement/paiement.component';
 import { PersonnelComponent } from './personnel/personnel.component';
 import { PlaningListComponent } from './planing-list/planing-list.component';
+import { PlaningMonthComponent } from './planing-month/planing-month.component';
 import { PlaningComponent } from './planing/planing.component';
 import { PresenceComponent } from './presence/presence.component';
 import { ProfilComponent } from './profil/profil.component';
@@ -82,7 +83,7 @@ const routes: Routes = [
     component: AbsenceComponent,
     data: {
       title: 'Absences',
-      role: [Role.Admin],
+      role: [Role.Admin,Role.Comptable],
     }
   },
   {
@@ -107,6 +108,15 @@ const routes: Routes = [
     path: 'planing',
     canActivate: [AuthGuard],
     component: PlaningComponent,
+    data: {
+      title: 'Planings',
+      role: [Role.Admin,Role.Comptable],
+    }
+  },
+  {
+    path: 'planing-month',
+    canActivate: [AuthGuard],
+    component: PlaningMonthComponent,
     data: {
       title: 'Planings',
       role: [Role.Admin,Role.Comptable],
