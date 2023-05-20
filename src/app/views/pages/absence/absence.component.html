@@ -85,13 +85,21 @@
     </div>
     <div class="modal-body">
       <form cForm [formGroup]="itemForm" ngNativeValidate>
-        <div cFormFloating class="mb-3">
-          <select formControlName="user_id" aria-label="Floating label select example" cSelect id="floatingSelect">
+        <div  class="mb-3">
+     <!--      <select formControlName="user_id" aria-label="Floating label select example" cSelect id="floatingSelect">
         
       <option *ngFor="let user of users" value="{{user.id}}"> {{user.firstname}} {{user.lastname}}</option>
        
-          </select>
+          </select> -->
           <label cLabel for="floatingSelect">Utilisateurs</label>
+          <ngx-select formControlName="user_id"
+          [allowClear]="true"
+          optionValueField="id" optionTextField="firstname"
+          
+          [items]="users"
+          placeholder="No user selected">
+</ngx-select>
+    
         </div>
         <div class="row p-2">
           <div [cFormFloating]="true" class="mb-3">

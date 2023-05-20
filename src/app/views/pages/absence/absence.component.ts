@@ -15,7 +15,7 @@ import { DatabaseService } from 'src/app/core/service/database.service';
 export class AbsenceComponent  implements OnInit{
   current_id:number|undefined
   rows:Absence[] | undefined;
-  users:User[] | undefined;
+  users:any[]=[];
   public selected :any = [];
       // @ts-ignore
       itemForm: FormGroup;

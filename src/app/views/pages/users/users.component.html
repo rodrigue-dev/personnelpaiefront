@@ -227,6 +227,70 @@
 
     </form>
    
+    <div class="row mt-3" *ngIf="checkTypeplaning">
+  
+      <h5>Jours à travailler</h5>
+    
+      <div class="col-md-3">
+        <c-form-check>
+          <input cFormCheckInput (click)="clickDay($event)" type="checkbox"
+          value="1" checked *ngIf="dayworks.indexOf(1)!=-1"/>
+          <input cFormCheckInput (click)="clickDay($event)" type="checkbox"
+          value="1" *ngIf="dayworks.indexOf(1)==-1"/>
+          <label cFormCheckLabel>Lundi</label>
+        </c-form-check>
+      </div>
+      <div class="col-md-3">
+        <c-form-check>
+          <input cFormCheckInput (click)="clickDay($event)" type="checkbox"
+            value="2" checked *ngIf="dayworks.indexOf(2)!=-1"/>
+            <input cFormCheckInput (click)="clickDay($event)" type="checkbox"
+            value="2" *ngIf="dayworks.indexOf(2)!=1"/>
+          <label cFormCheckLabel>Mardi</label>
+        </c-form-check>
+      </div>
+      <div class="col-md-3">
+        <c-form-check>
+          <input cFormCheckInput (click)="clickDay($event)" type="checkbox"
+          value="3" checked *ngIf="dayworks.indexOf(3)!=-1"/>
+          <input cFormCheckInput (click)="clickDay($event)" type="checkbox"
+          value="3" *ngIf="dayworks.indexOf(3)==-1"/>
+          <label cFormCheckLabel>Mercredi</label>
+        </c-form-check>
+      </div>
+      <div class="col-md-3">
+        <c-form-check>
+          <input cFormCheckInput (click)="clickDay($event)" type="checkbox"
+            value="4" checked *ngIf="dayworks.indexOf(4)!=-1"/>
+            <input cFormCheckInput (click)="clickDay($event)" type="checkbox"
+            value="4" *ngIf="dayworks.indexOf(4)==-1"/>
+          <label cFormCheckLabel>Jeudi</label>
+        </c-form-check>
+      </div>
+      <div class="col-md-3">
+        <c-form-check>
+          <input cFormCheckInput (click)="clickDay($event)" type="checkbox"
+            value="5" checked *ngIf="dayworks.indexOf(5)!=-1"/>
+            <input cFormCheckInput (click)="clickDay($event)" type="checkbox"
+            value="5" *ngIf="dayworks.indexOf(5)==-1"/>
+          <label cFormCheckLabel>Vendredi</label>
+        </c-form-check>
+      </div>
+      <div class="col-md-3">
+        <c-form-check>
+          <input cFormCheckInput (click)="clickDay($event)" type="checkbox"
+            value="6" />
+          <label cFormCheckLabel>Samedi</label>
+        </c-form-check>
+      </div>
+      <div class="col-md-3">
+        <c-form-check>
+          <input cFormCheckInput (click)="clickDay($event)" type="checkbox"
+            value="7" />
+          <label cFormCheckLabel>Dimanche</label>
+        </c-form-check>
+      </div>
+    </div>
   </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
@@ -307,7 +371,7 @@
           <label cLabel for="floatingSelect">ROLE</label>
         </div>
         <div cFormFloating class="mb-3 col-md-6">
-          <select formControlName="typeplaning" aria-label="Floating label select example" cSelect
+          <select formControlName="typeplaning"  (change)="changeTypePlaning($event)" aria-label="Floating label select example" cSelect
             id="floatingSelect">
             <option value="0"> Temps-plein
             </option>
@@ -347,13 +411,65 @@
             class="form-control" id="con-phone" type="file" autocomplete="off">
         </div>
       </div>
-
     </form>
 
-  </div>
+    <div class="row mt-3" *ngIf="checkTypeplaning">
+  
+        <h5>Jours à travailler</h5>
+        <div class="col-md-3">
+          <c-form-check>
+            <input cFormCheckInput (click)="clickDay($event)" type="checkbox"
+              value="1" checked/>
+            <label cFormCheckLabel>Lundi</label>
+          </c-form-check>
+        </div>
+        <div class="col-md-3">
+          <c-form-check>
+            <input cFormCheckInput (click)="clickDay($event)" type="checkbox"
+              value="2" />
+            <label cFormCheckLabel>Mardi</label>
+          </c-form-check>
+        </div>
+        <div class="col-md-3">
+          <c-form-check>
+            <input cFormCheckInput (click)="clickDay($event)" type="checkbox"
+            value="3"  />
+            <label cFormCheckLabel>Mercredi</label>
+          </c-form-check>
+        </div>
+        <div class="col-md-3">
+          <c-form-check>
+            <input cFormCheckInput (click)="clickDay($event)" type="checkbox"
+              value="4" />
+            <label cFormCheckLabel>Jeudi</label>
+          </c-form-check>
+        </div>
+        <div class="col-md-3">
+          <c-form-check>
+            <input cFormCheckInput (click)="clickDay($event)" type="checkbox"
+              value="5" />
+            <label cFormCheckLabel>Vendredi</label>
+          </c-form-check>
+        </div>
+        <div class="col-md-3">
+          <c-form-check>
+            <input cFormCheckInput (click)="clickDay($event)" type="checkbox"
+              value="6" />
+            <label cFormCheckLabel>Samedi</label>
+          </c-form-check>
+        </div>
+        <div class="col-md-3">
+          <c-form-check>
+            <input cFormCheckInput (click)="clickDay($event)" type="checkbox"
+              value="7" />
+            <label cFormCheckLabel>Dimanche</label>
+          </c-form-check>
+        </div>
+      </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
     <button class="btn btn-secondary mr-1  pull-right" type="button" (click)="onSubmit()">Enregister</button>
+  </div>
   </div>
 </ng-template>
 <ng-template #contentDelete let-modal>

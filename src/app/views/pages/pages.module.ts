@@ -30,9 +30,12 @@ import { SendMailComponent } from './send-mail/send-mail.component';
 import { SendSmsComponent } from './send-sms/send-sms.component';
 import { AbsenceComponent } from './absence/absence.component';
 import { PlaningMonthComponent } from './planing-month/planing-month.component';
+import { NgxSelectModule, INgxSelectOptions } from 'ngx-select-ex';
 
-
-
+const CustomSelectOptions: INgxSelectOptions = { // Check the interface for more options
+  optionValueField: 'id',
+  optionTextField: 'name'
+};
 @NgModule({
   declarations: [
     DepartementComponent,
@@ -75,6 +78,7 @@ import { PlaningMonthComponent } from './planing-month/planing-month.component';
     TabsModule,
     NavModule,
     ReactiveFormsModule,
+    NgxSelectModule.forRoot(CustomSelectOptions)
   ]
 })
 export class PagesModule { }

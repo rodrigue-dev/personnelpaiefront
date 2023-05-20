@@ -36,10 +36,12 @@ export class AvantageComponent implements OnInit{
     );
   }
   openLg(content:any) {
+    this.itemForm.reset();
     this.modalService.open(content, { size: 'md' });
 
   }
   openEditLg(content: any,row:any) {
+    this.itemForm.reset();
     this.itemForm=this.formBuilder.group({
       typeAvantage: row.typeAvantage,
       id: row.id
