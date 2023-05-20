@@ -215,6 +215,16 @@
           </select>
           <label cLabel for="floatingSelect">Departement</label>
         </div>
+        <div cFormFloating class="mb-3 col-md-6">
+          <select formControlName="fonction_id" aria-label="Floating label select example" cSelect
+            id="floatingSelect">
+
+            <option *ngFor="let fonction of fonctions" value="{{fonction.id}}"> {{fonction.typeFonction}}
+            </option>
+
+          </select>
+          <label cLabel for="floatingSelect">Fonctions</label>
+        </div>
         <div class="col-md-6">
           <label for="con-phone">Image </label>
           <div class="mb-3">
@@ -395,7 +405,7 @@
         <div cFormFloating class="mb-3 col-md-6">
           <select formControlName="fonction_id" aria-label="Floating label select example" cSelect
             id="floatingSelect">
-
+            <option>Choisir le fonction</option>
             <option *ngFor="let fonction of fonctions" value="{{fonction.id}}"> {{fonction.typeFonction}}
             </option>
 

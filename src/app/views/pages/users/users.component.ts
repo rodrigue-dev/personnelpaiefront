@@ -88,6 +88,7 @@ export class UsersComponent  implements OnInit{
   }
   openLg(content:any) {
     this.itemForm.reset();
+    this.imageSrc=null
     this.modalService.open(content, { size: 'lg' });
     this.database.getDepartements().subscribe((res)=>{
       this.departements=res;
@@ -123,6 +124,9 @@ export class UsersComponent  implements OnInit{
   openEditLg(content: any,row:any) {
     this.itemForm.reset();
     //this.onFileSelect(row.imageFile);
+    this.database.getFonctionByDepartement(parseInt(row.departement_id)).subscribe((res)=>{
+      this.fonctions=res;
+    });
     this.imageSrc = row.imageFile;
     if(row.typeplaning==2){
       this.checkTypeplaning=true
@@ -143,10 +147,11 @@ export class UsersComponent  implements OnInit{
       email: row.email,
       role: row.role,
       departement_id: row.departement_id,
+      fonction_id: row.fonction_id,
       id: row.id,
       departement: row.departement,
       typeplaning:row.typeplaning,
-      imageFile:row.imageFile,
+      imageFile:[],
       dayworks:[]
     })
     this.modalService.open(content, { size: 'lg' });
@@ -159,7 +164,7 @@ export class UsersComponent  implements OnInit{
     console.log(this.dayworks)
   }
   onSubmit() {
-    this.itemForm.value.imageFile = this.imageSrc;
+    
     this.itemForm.value.dayworks = this.dayworks;
     console.log(this.itemForm.value)
     this.database.createUser(this.itemForm.value).subscribe((res: any) => {
@@ -218,6 +223,7 @@ export class UsersComponent  implements OnInit{
            // this.fileType=file.type;
         };
     }
+    this.itemForm.value.imageFile = this.imageSrc;
 }
 onImageSelect(event:any) {
   const file = event.target.files[0];
