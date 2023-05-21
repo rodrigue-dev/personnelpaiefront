@@ -22,6 +22,9 @@ export class DatabaseService {
   getCalculVariablebyMonth(month:number,year:number,type:number,user:number) {
     return this.http.get<any>(`${environment.apiUrl}/v1/paiements/calcul/${month}/${year}/${type}/${user}`)
   }
+  sendBulletin(id:number) {
+    return this.http.get<any>(`${environment.apiUrl}/v1/paiements/sendbulletin/${id}`)
+  }
   getPaiementbyMonth(id:number) {
     return this.http.get<any>(`${environment.apiUrl}/v1/paiements/month/${id}`)
   }

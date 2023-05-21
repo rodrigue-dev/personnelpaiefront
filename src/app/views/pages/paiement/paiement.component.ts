@@ -66,6 +66,12 @@ export class PaiementComponent implements OnInit {
     .download(row.id)
     .subscribe(blob => FileSaver.saveAs(blob, row.id+'.pdf'));
   }
+  sendBulletin(row: any) {
+    this.database.sendBulletin(row.id).subscribe((res) => {
+     // this.rows = res;
+    }
+    );
+  }
   detail(content: any, row: any) {
     this.itemForm.patchValue({
       'total_net': row.total_net,
