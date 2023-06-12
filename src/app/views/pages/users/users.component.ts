@@ -124,7 +124,7 @@ export class UsersComponent  implements OnInit{
   openEditLg(content: any,row:any) {
     this.itemForm.reset();
     //this.onFileSelect(row.imageFile);
-    this.database.getFonctionByDepartement(parseInt(row.departement_id)).subscribe((res)=>{
+/*     this.database.getFonctionByDepartement(parseInt(row.departement_id)).subscribe((res)=>{
       this.fonctions=res;
     });
     this.imageSrc = row.imageFile;
@@ -160,8 +160,9 @@ export class UsersComponent  implements OnInit{
     }, (error) => {
 
     }
-    );
+    ); */
     console.log(this.dayworks)
+    this.router.navigate(["/pages/edit-user/"+row.id]);
   }
   onSubmit() {
     

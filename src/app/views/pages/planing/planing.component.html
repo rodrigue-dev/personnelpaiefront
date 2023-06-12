@@ -53,7 +53,6 @@
                     <td *ngFor="let line of row.makeplanings">
                         <div class="card card_planing" *ngIf="line.planing_id !=0">
                             <div class="card-header">
-
                                 {{line.heure_debut}} - {{line.heure_fin}}
                                 <div class="btn-group">
                                     <button *ngIf="line.typeplaning ==2" title="Modifier le planing"
@@ -74,6 +73,9 @@
                                 <p></p>
                                 <p></p>
                                 <span *ngIf="line.ispointe" class="badge bg-success">Pointé<i></i></span>
+                                <div *ngIf="line.heuresuppl !==null">
+                                    <span class="badge bg-primary">H. supplementaire: {{line.heuresuppl}}</span>
+                                </div>
                             </div>
                         </div>
                         <div class="text-center bg-primary"

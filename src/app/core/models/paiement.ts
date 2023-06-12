@@ -1,6 +1,7 @@
 export class Paiement{
     id: number | undefined;
     datePaie: string | undefined;
+    dateCreation:string | undefined;
     total_jour: number | undefined;
     month: number | undefined;
     year: number | undefined;

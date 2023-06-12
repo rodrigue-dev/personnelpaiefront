@@ -55,7 +55,10 @@ export class PaiementMakeComponent  implements OnInit {
     );
   }
   calculSalaire(){
-    this.rows=[]
+    if(this.rows[0].dateCreation==null){
+      this.toaster.error("Une erreur s'est produite", "Le bulletin a deja ete genere pour ce mois");
+    }else{
+       this.rows=[]
     let id=Number(this.route.snapshot.paramMap.get('month'))
     let year=new Date().getFullYear();
     this.database.getCalculVariablebyMonth(id,year,1,this.currentUser.id).subscribe((res)=>{
@@ -63,7 +66,9 @@ export class PaiementMakeComponent  implements OnInit {
     },(error)=>{
 
     }
-    );
+    ); 
+    }
+  
   }
   calculHeureSup(){
     this.rows=[]
@@ -77,14 +82,20 @@ export class PaiementMakeComponent  implements OnInit {
     );
   }
   generateBulletin(){
+    if(this.rows[0].dateCreation==null){
+      this.toaster.error("Une erreur s'est produite", "Le bulletin a deja ete genere pour ce mois");
+    }else{
     this.rows=[]
     let id=Number(this.route.snapshot.paramMap.get('month'))
     let year=new Date().getFullYear();
     this.database.getCalculVariablebyMonth(id,year,10,this.currentUser.id).subscribe((res)=>{
       this.rows=res;
-    });
+    });}
   }
   sendMail(){
+    if(this.rows[0].datePaie==null){
+      this.toaster.error("Une erreur s'est produite", "Le bulletin a deja ete payé pour ce mois");
+    }else{
     this.rows=[]
     let id=Number(this.route.snapshot.paramMap.get('month'))
     let year=new Date().getFullYear();
@@ -93,7 +104,7 @@ export class PaiementMakeComponent  implements OnInit {
     },(error)=>{
 
     }
-    );
+    );}
   }
   calculRetenue(){
     let id=Number(this.route.snapshot.paramMap.get('month'))

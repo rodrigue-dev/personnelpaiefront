@@ -6,7 +6,7 @@
       <input class="form-control" type="text" style="margin-right: 15px;width:50%;"
         placeholder="Type to filter the all column..." (keyup)="updateFilter($event)" />
       <div class="btn-group">
-        <button type="button" class="btn btn-danger btn-sm" (click)="openLg(content)"><i class="fa fa-plus"></i> Ajouter
+        <button type="button" class="btn btn-danger btn-sm" routerLink="/pages/add-user"><i class="fa fa-plus"></i> Ajouter
           un employé
         </button>
         <!-- <ng-container *ngTemplateOutlet="staticBackdrop"></ng-container>-->
@@ -70,7 +70,7 @@
         <ngx-datatable-column [sortable]="false" cellClass="allow-overflow" [width]="40">
           <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
             <div class="btn-group">
-              <button class="btn btn-sm btn-outline-dark" (click)="openEditLg(contentEdit,row)">Editer</button>
+              <button class="btn btn-sm btn-outline-dark" (click)="openEditLg(row,row)">Editer</button>
               <button class="btn btn-sm btn-outline-danger" (click)="openDelete(contentDelete,row)">Supprimer</button>
             </div>
 

@@ -51,6 +51,9 @@
                                 <p></p>
                                 <p></p>
                                 <span *ngIf="line.ispointe" class="badge bg-success">Pointé<i></i></span>
+                                <div *ngIf="line.heuresuppl !==null">
+                                    <span class="badge bg-primary">H. supplementaire: {{line.heuresuppl}}</span>
+                                </div>
                             
 
                             </div>

@@ -13,4 +13,5 @@ export class MakePlaning{
     user_name: string | undefined;
     repeat: string | undefined;
     ispointe: boolean | undefined;
+    heuresuppl: number| undefined;
 }

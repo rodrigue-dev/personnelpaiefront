@@ -1,0 +1,188 @@
+<div class="card mb-4">
+
+    <div class="card-header mb-4">
+      <strong>Ajouter </strong> <small>Employés</small>
+      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <div class="btn-group">
+    
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+   <form cForm [formGroup]="itemForm" ngNativeValidate>
+    <div class="row p-2" *ngIf="firstForm">
+      <div [cFormFloating]="true" class="mb-3 col-md-6">
+        <input cFormControl id="floatingInput" placeholder="firstname" type="text" formControlName="firstname" />
+        <label cLabel for="floatingInput">Nom</label>
+      </div>
+      <div [cFormFloating]="true" class="mb-3 col-md-6">
+        <input cFormControl id="floatingInput" placeholder="lastname" type="text" formControlName="lastname" />
+        <label cLabel for="floatingInput">Prenom</label>
+      </div>
+      <div [cFormFloating]="true" class="mb-3 col-md-6">
+        <input cFormControl id="floatingInput" placeholder="phone" type="text" formControlName="phone" />
+        <label cLabel for="floatingInput">Telephone</label>
+      </div>
+      <div [cFormFloating]="true" class="mb-3 col-md-6">
+        <input cFormControl id="floatingInput" placeholder="email" type="email" formControlName="email" />
+        <label cLabel for="floatingInput">Email</label>
+        <ng-container class="invalid"
+          *ngIf="itemForm.get('email')!.hasError('required') && itemForm.get('email')!.touched">
+          email is required</ng-container>
+        <ng-container class="invalid"
+          *ngIf="itemForm!.get('email')!.hasError('pattern') && itemForm.get('email')!.touched">
+          email trop court</ng-container>
+      </div>
+      <div class="mb-3 col-md-6">
+        <div>
+          <c-form-check>
+            <input cFormCheckInput formControlName="flexRadioDefault" formControlName="genre" type="radio"
+              value="M" />
+            <label cFormCheckLabel>Homme</label>
+          </c-form-check>
+          <c-form-check>
+            <input cFormCheckInput formControlName="flexRadioDefault" formControlName="genre" type="radio"
+              value="F" />
+            <label cFormCheckLabel>Femme</label>
+          </c-form-check>
+        </div>
+      </div>
+
+      <div cFormFloating class="mb-3 col-md-6">
+        <select formControlName="etatCivil" aria-label="Floating label select example" cSelect id="floatingSelect">
+
+          <option value="marie">Marie(é)</option>
+          <option value="celibataire">Celibataire</option>
+        </select>
+        <label cLabel for="floatingSelect">Etat civil</label>
+      </div>
+      <div [cFormFloating]="true" class="mb-3 col-md-6">
+        <input cFormControl id="floatingInput" placeholder="compteIban" type="text" formControlName="compteIban" />
+        <label cLabel for="floatingInput">CompteIban</label>
+        <ng-container class="invalid"
+          *ngIf="itemForm!.get('compteIban')!.hasError('required') && itemForm.get('compteIban')!.touched">
+          compteIban is required</ng-container>
+        <ng-container class="invalid"
+          *ngIf="itemForm!.get('compteIban')!.hasError('pattern') && itemForm.get('compteIban')!.touched">
+          compteIban trop court</ng-container>
+      </div>
+      <div cFormFloating class="mb-3 col-md-6">
+        <select formControlName="role" aria-label="Floating label select example" cSelect id="floatingSelect_role">
+          <option value="ROLE_USER">ROLE_USER</option>
+          <option value="ROLE_COMPTABLE">ROLE_COMPTABLE</option>
+          <option value="ROLE_ADMIN">ROLE_ADMIN</option>
+        </select>
+        <label cLabel for="floatingSelect">ROLE</label>
+      </div>
+      <div class="col-md-6">
+        <label for="con-phone">Image </label>
+        <div class="mb-3">
+          <img class="img-fluid w-50 rounded" [src]="imageSrc" alt="">
+        </div>
+        <input accept="image/png, image/jpeg" (change)="onFileSelect($event)"
+          class="form-control" id="con-phone" type="file" autocomplete="off">
+      </div>
+      </div>
+      <div class="row" *ngIf="!firstForm">
+        <div [cFormFloating]="true" class="mb-3 col-md-6">
+          <input cFormControl id="floatingInput" placeholder="phone" type="date" formControlName="dateDebut" />
+          <label cLabel for="floatingInput">Date de debut</label>
+        </div>
+        <div [cFormFloating]="true" class="mb-3 col-md-6">
+          <input cFormControl id="floatingInput" placeholder="phone" type="date" formControlName="dateFin" />
+          <label cLabel for="floatingInput">DateFin</label>
+        </div>
+      <div cFormFloating class="mb-3 col-md-6">
+        <select formControlName="typeplaning"  (change)="changeTypePlaning($event)" aria-label="Floating label select example" cSelect
+          id="floatingSelect">
+          <option value="0"> Temps-plein
+          </option>
+          <option value="1"> Mi-Temps
+          </option>
+          <option value="2"> Etudiant
+          </option>
+        </select>
+        <label cLabel for="floatingSelect">Type de planing</label>
+      </div>
+      <div cFormFloating class="mb-3 col-md-6">
+        <select formControlName="departement_id" (change)="changeDepartement($event)" aria-label="Floating label select example" cSelect
+          id="floatingSelect">
+
+          <option *ngFor="let departement of departements" value="{{departement.id}}"> {{departement.nomDepartement}}
+          </option>
+
+        </select>
+        <label cLabel for="floatingSelect">Departement</label>
+      </div>
+      <div cFormFloating class="mb-3 col-md-6">
+        <select formControlName="fonction_id" aria-label="Floating label select example" cSelect
+          id="floatingSelect">
+          <option>Choisir le fonction</option>
+          <option *ngFor="let fonction of fonctions" value="{{fonction.id}}"> {{fonction.typeFonction}}
+          </option>
+
+        </select>
+        <label cLabel for="floatingSelect">Fonctions</label>
+      </div>
+   
+    </div>
+  </form>
+  <div class="row mt-3" *ngIf="checkTypeplaning">
+  
+    <h5>Jours à travailler</h5>
+  
+    <div class="col-md-3">
+      <c-form-check>
+        <input cFormCheckInput (click)="clickDay($event)" type="checkbox"
+        value="1" checked *ngIf="dayworks.indexOf(1)!=-1"/>
+        <input cFormCheckInput (click)="clickDay($event)" type="checkbox"
+        value="1" *ngIf="dayworks.indexOf(1)==-1"/>
+        <label cFormCheckLabel>Lundi</label>
+      </c-form-check>
+    </div>
+    <div class="col-md-3">
+      <c-form-check>
+        <input cFormCheckInput (click)="clickDay($event)" type="checkbox"
+          value="2" checked *ngIf="dayworks.indexOf(2)!=-1"/>
+          <input cFormCheckInput (click)="clickDay($event)" type="checkbox"
+          value="2" *ngIf="dayworks.indexOf(2)!=1"/>
+        <label cFormCheckLabel>Mardi</label>
+      </c-form-check>
+    </div>
+    <div class="col-md-3">
+      <c-form-check>
+        <input cFormCheckInput (click)="clickDay($event)" type="checkbox"
+        value="3" checked *ngIf="dayworks.indexOf(3)!=-1"/>
+        <input cFormCheckInput (click)="clickDay($event)" type="checkbox"
+        value="3" *ngIf="dayworks.indexOf(3)==-1"/>
+        <label cFormCheckLabel>Mercredi</label>
+      </c-form-check>
+    </div>
+    <div class="col-md-3">
+      <c-form-check>
+        <input cFormCheckInput (click)="clickDay($event)" type="checkbox"
+          value="4" checked *ngIf="dayworks.indexOf(4)!=-1"/>
+          <input cFormCheckInput (click)="clickDay($event)" type="checkbox"
+          value="4" *ngIf="dayworks.indexOf(4)==-1"/>
+        <label cFormCheckLabel>Jeudi</label>
+      </c-form-check>
+    </div>
+    <div class="col-md-3">
+      <c-form-check>
+        <input cFormCheckInput (change)="clickDay($event)" type="checkbox"
+          value="5" checked *ngIf="dayworks.indexOf(5)!=-1"/>
+          <input cFormCheckInput (change)="clickDay($event)" type="checkbox"
+          value="5" *ngIf="dayworks.indexOf(5)==-1"/>
+        <label cFormCheckLabel>Vendredi</label>
+      </c-form-check>
+    </div>
+  </div>
+  </div>
+  <div class="card-footer text-end">
+    <button *ngIf="firstForm" type="button" class="btn btn-success" (click)="nextButton()"><i class="fa fa-arrow-right"></i>         Suivant
+      </button>
+      <button *ngIf="!firstForm" type="button" class="btn btn-waring" (click)="previousButton()"><i class="fa fa-arrow-left"></i>         Precedent
+      </button>
+      <button *ngIf="!firstForm" class="btn btn-secondary mr-1  pull-right" type="button" (click)="onSubmit()">Enregister</button>
+  </div>
+  </div>

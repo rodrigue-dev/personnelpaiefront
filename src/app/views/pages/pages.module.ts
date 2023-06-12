@@ -31,6 +31,8 @@ import { SendSmsComponent } from './send-sms/send-sms.component';
 import { AbsenceComponent } from './absence/absence.component';
 import { PlaningMonthComponent } from './planing-month/planing-month.component';
 import { NgxSelectModule, INgxSelectOptions } from 'ngx-select-ex';
+import { AddUserComponent } from './users/add-user/add-user.component';
+import { EditUserComponent } from './users/edit-user/edit-user.component';
 
 const CustomSelectOptions: INgxSelectOptions = { // Check the interface for more options
   optionValueField: 'id',
@@ -58,7 +60,9 @@ const CustomSelectOptions: INgxSelectOptions = { // Check the interface for more
     SendMailComponent,
     SendSmsComponent,
     AbsenceComponent,
-    PlaningMonthComponent
+    PlaningMonthComponent,
+    AddUserComponent,
+    EditUserComponent
   ],
   imports: [
     CommonModule,

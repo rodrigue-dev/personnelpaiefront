@@ -21,6 +21,8 @@ import { PresenceComponent } from './presence/presence.component';
 import { ProfilComponent } from './profil/profil.component';
 import { SendMailComponent } from './send-mail/send-mail.component';
 import { TypePlaningComponent } from './type-planing/type-planing.component';
+import { AddUserComponent } from './users/add-user/add-user.component';
+import { EditUserComponent } from './users/edit-user/edit-user.component';
 import { UsersComponent } from './users/users.component';
 
 const routes: Routes = [
@@ -153,6 +155,25 @@ const routes: Routes = [
     path: 'users',
     canActivate: [AuthGuard],
     component: UsersComponent,
+    data: {
+      title: 'Users',
+      role: [Role.Admin,Role.Comptable],
+    }
+  },
+  
+  {
+    path: 'add-user',
+    canActivate: [AuthGuard],
+    component: AddUserComponent,
+    data: {
+      title: 'Users',
+      role: [Role.Admin,Role.Comptable],
+    }
+  },
+  {
+    path: 'edit-user/:id',
+    canActivate: [AuthGuard],
+    component: EditUserComponent,
     data: {
       title: 'Users',
       role: [Role.Admin,Role.Comptable],

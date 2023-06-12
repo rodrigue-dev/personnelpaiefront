@@ -17,8 +17,7 @@
           <tr>
             <th scope="col">#</th>
             <th scope="col">typeFonction </th>
-            <th scope="col">salaireSuppl </th>
-            <th scope="col">heureTravaille</th>
+            <th scope="col">salaire Heure </th>
             <th scope="col">Actions</th>
           </tr>
         </thead>
@@ -27,7 +26,6 @@
             <th scope="row">{{row.id}}</th>
             <td>{{row.typeFonction}}</td>
             <td>{{row.salaireSuppl}}</td>
-            <td>{{row.heureTravaille}}</td>
             <td>
               <div class="btn-group">
                 <button class="btn btn-sm btn-outline-success" (click)="openEditLg(contentEdit,row)">Editer</button>
@@ -58,11 +56,7 @@
           </div>
           <div [cFormFloating]="true" class="mb-3">
             <input cFormControl id="floatingInput" placeholder="salaireSuppl" type="text" formControlName="salaireSuppl" />
-            <label cLabel for="floatingInput">salaireSuppl</label>
-          </div>
-          <div [cFormFloating]="true" class="mb-3">
-            <input cFormControl id="floatingInput" placeholder="phone" type="text" formControlName="heureTravaille" />
-            <label cLabel for="floatingInput">heureTravaille</label>
+            <label cLabel for="floatingInput">salaire heure</label>
           </div>
         
         </div>
@@ -86,17 +80,13 @@
         <div class="p-2">
           <div [cFormFloating]="true" class="mb-3">
             <input cFormControl id="floatingInput" placeholder="typeFonction" type="text" formControlName="typeFonction" />
-            <label cLabel for="floatingInput">typeFonction</label>
+            <label cLabel for="floatingInput">Type de fonction</label>
           </div>
           <div [cFormFloating]="true" class="mb-3">
             <input cFormControl id="floatingInput" placeholder="salaireSuppl" type="text" formControlName="salaireSuppl" />
-            <label cLabel for="floatingInput">salaireSuppl</label>
+            <label cLabel for="floatingInput">Salaire heure</label>
           </div>
-          <div [cFormFloating]="true" class="mb-3">
-            <input cFormControl id="floatingInput" placeholder="phone" type="text" formControlName="heureTravaille" />
-            <label cLabel for="floatingInput">heureTravaille</label>
-          </div>
-        
+      
         </div>
   
       </form>
