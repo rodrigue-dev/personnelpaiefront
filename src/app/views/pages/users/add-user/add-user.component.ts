@@ -106,11 +106,11 @@ clickDay(event:Event){
   console.log(this.dayworks.length)
   // @ts-ignore
   if(event.target!.checked!){
-    if(this.dayworks.length <4){
+    if(this.dayworks.length <3){
        this.dayworks.push((event.target as HTMLInputElement).value)
     console.log(this.dayworks)
     }else{
-
+      this.toaster.error("Impossible de travailler plus de 3 jours pour ce employé", "Erreur");
     }
    
   }else{

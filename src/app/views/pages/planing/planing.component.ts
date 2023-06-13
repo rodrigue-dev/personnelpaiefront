@@ -139,7 +139,7 @@ export class PlaningComponent   implements OnInit {
     this.rowHeaders=[];
     this.rowModels=[]
     let resut= new Date(date)
-    resut.setDate(resut.getDate()+1)
+    resut.setDate(resut.getDate()+3)
     let currentDate_=this.pipe.transform(resut,'yyyy-MM-dd')
      this.database.getPlaningHeaders(currentDate_!).subscribe((res)=>{
       this.rowHeaders=res;
