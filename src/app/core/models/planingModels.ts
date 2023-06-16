@@ -9,6 +9,7 @@ export class PlaningModel{
     date_debut: string | undefined;
     date_fin: string | undefined;
     total_heure: number| undefined;
+    total_heure_suppl: number| undefined;
     fonction: string | undefined;
     heure_debut: string | undefined;
     heure_fin: string | undefined;

@@ -88,8 +88,8 @@ export class EditUserComponent implements OnInit{
       id: row.id,
       departement: row.departement,
       typeplaning:row.typeplaning,
-      dateDebut:[null, Validators.nullValidator],
-      dateFin:[null, Validators.nullValidator],
+      dateDebut:row.dateDebut,
+      dateFin:row.dateFin,
       imageFile:[],
       dayworks:[]
     })
@@ -125,7 +125,7 @@ export class EditUserComponent implements OnInit{
 onSubmit() {
     
   this.itemForm.value.dayworks = this.dayworks;
-  this.itemForm.value.imageFile = this.imageSrc;
+ // this.itemForm.value.imageFile = this.imageSrc;
   console.log(this.itemForm.value)
   this.database.createUser(this.itemForm.value).subscribe((res: any) => {
     this.toaster.success("Employe enregistré avec success", "Success");
@@ -138,13 +138,22 @@ onSubmit() {
   });
 }
 clickDay(event:Event){
+  console.log(this.dayworks.length)
   // @ts-ignore
   if(event.target!.checked!){
-   
-    this.dayworks.push((event.target as HTMLInputElement).value)
+    if(this.dayworks.length <3){
+       this.dayworks.push((event.target as HTMLInputElement).value)
     console.log(this.dayworks)
+    }else{
+      this.toaster.error("Impossible de travailler plus de 3 jours pour ce employé", "Erreur");
+    }
+   
   }else{
-
+    console.log((event.target as HTMLInputElement).value)
+    let index:number=this.dayworks.indexOf((event.target as HTMLInputElement).value)
+   if(index !== -1){
+    this.dayworks.splice(index,1)
+   }
   }
   
 }

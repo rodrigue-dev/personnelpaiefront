@@ -46,6 +46,7 @@
                 <th>Employé</th>
                 <th *ngFor="let day of rowHeaders">{{day | date:"EEE'\n'd/M"}}</th>
                 <th>Total heure</th>
+                <th>Total heure suppl</th>
             </thead>
             <tbody>
                 <tr *ngFor="let row of rowModels">
@@ -85,6 +86,7 @@
 
                     </td>
                     <td>{{row.total_heure|number}}</td>
+                    <td>{{row.total_heure_suppl|number}}</td>
                 </tr>
             </tbody>
         </table>
