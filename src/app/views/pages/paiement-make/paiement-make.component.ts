@@ -55,7 +55,7 @@ export class PaiementMakeComponent  implements OnInit {
     );
   }
   calculSalaire(){
-    if(this.rows[0].dateCreation==null){
+    if(this.rows.length>0 && this.rows[0].dateCreation==null){
       this.toaster.error("Une erreur s'est produite", "Le bulletin a deja ete genere pour ce mois");
     }else{
        this.rows=[]
