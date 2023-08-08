@@ -152,27 +152,36 @@
     <div class="modal-body">
   
         <div class="row">
-          <div cFormFloating class="mb-3 col-md-8">
-            <select [(ngModel)]="avantage" (change)="avantageChange(avantage)"  aria-label="Floating label select example" cSelect id="floatingSelect">
+          <div cFormFloating class="mb-3 col-md-6">
+            <select [(ngModel)]="avantage" aria-label="Floating label select example" cSelect id="floatingSelect">
           
         <option *ngFor="let avantage of avantages" value="{{avantage.id}}"> {{avantage.typeAvantage}} </option>
          
             </select>
             <label cLabel for="floatingSelect">Avantage</label>
           </div>
-        
+          <div [cFormFloating]="true" class="mb-3 col-md-4">
+            <input [(ngModel)]="amountAvantage" cFormControl id="floatingInput" placeholder="salaireSuppl" type="number"/>
+            <label cLabel for="floatingInput">Montant</label>
+          </div>
+          <div class="col-md-2 mb-3">
+               <button class="btn btn-secondary mr-1  pull-right" type="button" (click)="avantageChange()">Ajouter</button>
+       
+          </div>
         </div>
         <div class="row container">
           <table class="table ">
             <thead>
               <th>#</th>
             <th>Avantage</th>
+            <th>Montant</th>
             <th></th>
             </thead>
             <tbody>
               <tr *ngFor="let row of avantagesbyfonction">
                 <td></td>
-                <td>{{row.typeAvantage}}</td>
+                <td>{{row.avantage_libelle}}</td>
+                <td>{{row.montant}}</td>
                 <td><button (click)="removeAvantage(row.id)" class="btn btn-sm btn-danger">
                   <svg cIcon class="me-2" name="cilTrash"></svg>
                 </button></td>

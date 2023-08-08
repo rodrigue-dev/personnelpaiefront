@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
 import { Avantage } from 'src/app/core/models/avantage';
+import { AvantageFonction } from 'src/app/core/models/avantage_fonction';
 import { Departement } from 'src/app/core/models/departement';
 import { Fonction } from 'src/app/core/models/fonction';
 import { User } from 'src/app/core/models/user';
@@ -24,8 +25,9 @@ export class FonctionComponent  implements OnInit {
   selectFonction: null| undefined;
   departement:null| undefined;
   avantage:null| undefined;
+  amountAvantage:null|undefined;
   current_id:number|undefined
-  avantagesbyfonction:Avantage[] | undefined;
+  avantagesbyfonction:AvantageFonction[] | undefined;
       // @ts-ignore
       itemForm: FormGroup;
       constructor( private modalService: NgbModal,private formBuilder: FormBuilder,
@@ -115,12 +117,13 @@ export class FonctionComponent  implements OnInit {
     this.toaster.error("Ust produite", err.message);
   });
   }
-  avantageChange(event:any){
+  avantageChange(){
     console.log(event)
-    this.items.push(event);
+  //  this.items.push(event);
     const values = {
           'fonction_id':this.selectFonction,
-          'items':this.items,
+          'avantage_id':this.avantage,
+          'montant':this.amountAvantage
      
   }
   this.database.createFonctionAvantage(values).subscribe((res: any) => {
@@ -172,9 +175,7 @@ export class FonctionComponent  implements OnInit {
     this.items=[]
     this.items.push(event);
     const values = {
-          'fonction_id':this.selectFonction,
-          'items':this.items,
-     
+          'id':event,
   }
     this.database.removeFonctionAvantage(values).subscribe((res: any) => {
       this.toaster.success("Suppression avec success", 'OK');

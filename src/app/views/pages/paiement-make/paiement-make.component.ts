@@ -64,7 +64,7 @@ export class PaiementMakeComponent  implements OnInit {
     this.database.getCalculVariablebyMonth(id,year,1,this.currentUser.id).subscribe((res)=>{
       this.rows=res;
     },(error)=>{
-
+      this.toaster.error("Une erreur s'est produite", "verifier les configurations");
     }
     ); 
     }
@@ -77,12 +77,12 @@ export class PaiementMakeComponent  implements OnInit {
     this.database.getCalculVariablebyMonth(id,year,2,this.currentUser.id).subscribe((res)=>{
       this.rows=res;
     },(error)=>{
-
+      this.toaster.error("Une erreur s'est produite", "verifier les configurations");
     }
     );
   }
   generateBulletin(){
-    if(this.rows[0].dateCreation==null){
+    if(this.rows[0]!.dateCreation==null){
       this.toaster.error("Une erreur s'est produite", "Le bulletin a deja ete genere pour ce mois");
     }else{
     this.rows=[]
@@ -93,7 +93,7 @@ export class PaiementMakeComponent  implements OnInit {
     });}
   }
   sendMail(){
-    if(this.rows[0].datePaie==null){
+    if(this.rows[0]!.datePaie !==null){
       this.toaster.error("Une erreur s'est produite", "Le bulletin a deja ete payé pour ce mois");
     }else{
     this.rows=[]
@@ -102,7 +102,7 @@ export class PaiementMakeComponent  implements OnInit {
     this.database.getCalculVariablebyMonth(id,year,11,this.currentUser.id).subscribe((res)=>{
       this.rows=res;
     },(error)=>{
-
+      this.toaster.error("Une erreur s'est produite", "verifier les configurations");
     }
     );}
   }
