@@ -71,7 +71,8 @@ export class HeureSupplComponent  implements OnInit{
     });
   }
   openDelete(content: any,row:any) {
-    this.current_id=row.id;
+  console.log(row);
+    this.current_id=row;
     this.modalService.open(content, { size: 'md' });
   }
   delete() {

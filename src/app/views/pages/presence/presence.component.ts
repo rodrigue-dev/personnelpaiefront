@@ -59,14 +59,17 @@ export class PresenceComponent implements OnInit {
       'id':this.selectrow.id,
       'heureDebut':this.timeIn,
       'heureFin':this.timeOut,
-      'user_id':this.selectrow.user_id
+      'user_id':this.selectrow.user_id,
+      'date_presence':this.selectdate!
     }
     this.database.createFiche(values).subscribe((res: any) => {
       this.toaster.success("Enregistrement avec success", 'OK');
      this.modalService.dismissAll();
      this.database.getPresencebyDate(this.selectdate!).subscribe((res)=>{
       this.rows=res;
-    })}
+    })},(error)=>{
+      this.toaster.error("Une erreur s'est produite", "Impossible d'enregister ce planing");
+    }
     );
     
   }

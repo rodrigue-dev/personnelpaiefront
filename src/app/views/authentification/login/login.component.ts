@@ -26,8 +26,8 @@ export class LoginComponent
 
   ngOnInit() {
     this.authForm = this.formBuilder.group({
-      email: ["admin@localhost.com", Validators.required],
-      password: ["123456789", Validators.required],
+      email: ["nganmoue3@gmail.com", Validators.required],
+      password: ["12345", Validators.required],
     });
   }
 
