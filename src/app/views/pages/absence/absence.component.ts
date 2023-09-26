@@ -43,6 +43,7 @@ export class AbsenceComponent  implements OnInit{
     this.modalService.open(content, { size: 'md' });
     this.database.getUsers().subscribe((res)=>{
       this.users=res;
+      this.users.forEach(item => item.text = item['firstname'] +" "+ item['lastname']);
     }
     );
   }

@@ -2,20 +2,20 @@
     <c-card-header>
       <strong>Listes </strong> <small>Absences</small>
       <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-  
+
         <div class="btn-group">
           <button type="button" class="btn btn-primary btn-md" (click)="openLg(content)"><i
               class="icofont icofont-plus"></i>Ajouter une absence
           </button>
         </div>
       </div>
-  
+
     </c-card-header>
     <c-card-body>
       <ngx-datatable #table class="bootstrap" [rows]="rows" [columnMode]="'force'" [scrollbarH]=true [headerHeight]="50"
       [footerHeight]="50" [rowHeight]="'auto'" [limit]="4" [selected]="selected" [selectAllRowsOnPage]="false"
      >
-    
+
       <ngx-datatable-column name="Nom" prop="user_name">
         <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
           {{row.user_name}}
@@ -87,19 +87,20 @@
       <form cForm [formGroup]="itemForm" ngNativeValidate>
         <div  class="mb-3">
      <!--      <select formControlName="user_id" aria-label="Floating label select example" cSelect id="floatingSelect">
-        
+
       <option *ngFor="let user of users" value="{{user.id}}"> {{user.firstname}} {{user.lastname}}</option>
-       
+
           </select> -->
           <label cLabel for="floatingSelect">Utilisateurs</label>
           <ngx-select formControlName="user_id"
           [allowClear]="true"
-          optionValueField="id" optionTextField="firstname"
-          
+          optionValueField="id" optionTextField="text"
           [items]="users"
           placeholder="No user selected">
+     
+
 </ngx-select>
-    
+
         </div>
         <div class="row p-2">
           <div [cFormFloating]="true" class="mb-3">
@@ -120,7 +121,7 @@
           </div>
 
         </div>
-  
+
       </form>
     </div>
     <div class="modal-footer">
@@ -151,7 +152,7 @@
           </div>
 
         </div>
-  
+
       </form>
     </div>
     <div class="modal-footer">
